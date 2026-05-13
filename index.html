@@ -792,12 +792,13 @@ function applySFilters() {
       <td style="color:var(--text2)">${t.Proyecto||'—'}</td>
       <td><div style="display:flex;align-items:center;gap:6px">${t.Propietario?av(t.Propietario,18):''}<span style="font-size:11px;color:var(--text2)">${t.Propietario?t.Propietario.split(' ')[0]:'-'}</span></div></td>
       <td>${badge(t.Estado||'—', stC[t.Estado]||'bg-gr')}</td>
+      <td><span style="font-size:11px;color:var(--text2)">${t.Sprint||'—'}</span></td>
       <td>${t.Actividad?`<span class="act-pill" style="background:${ac}22;color:${ac}">${t.Actividad}</span>`:'—'}</td>
       <td><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3)">${t['SP Real']||'—'}</span></td>
       <td><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3)">${t.Horas||'—'}</span></td>
     </tr>`;
   }).join('');
-  const scols = ['Name','Proyecto','Propietario','Estado','Actividad','SP Real','Horas'];
+  const scols = ['Name','Proyecto','Propietario','Estado','Sprint','Actividad','SP Real','Horas'];
   document.querySelectorAll('.sprint-tbl thead th').forEach((th, i) => {
     th.classList.remove('sort-asc','sort-desc');
     if (scols[i] === sSort.col) th.classList.add(sSort.dir === 1 ? 'sort-asc' : 'sort-desc');
