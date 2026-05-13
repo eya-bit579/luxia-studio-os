@@ -232,7 +232,7 @@ select.si{color:var(--text2);cursor:pointer}
   <div class="logo">Luxia Labs <span>Studio OS 1.2</span></div>
   <div class="nav">
     <button class="nav-btn active" id="nav-portfolio" onclick="showView('portfolio')">Portafolio</button>
-    <button class="nav-btn" id="nav-sprint" onclick="showView('sprint')">Sprint Actual</button>
+    <button class="nav-btn" id="nav-sprint" onclick="showView('sprint')">Sprints</button>
     <button class="nav-btn" id="nav-gates" onclick="showView('gates')">Gates</button>
     <button class="nav-btn" id="back-btn" onclick="showView('portfolio')" style="display:none;color:var(--text3)">← Proyectos</button>
   </div>
@@ -326,6 +326,7 @@ select.si{color:var(--text2);cursor:pointer}
             <th onclick="sortS('Proyecto')">Proyecto</th>
             <th onclick="sortS('Propietario')">Responsable</th>
             <th onclick="sortS('Estado')">Estado</th>
+            <th onclick="sortS('Sprint')">Sprint</th>
             <th onclick="sortS('Actividad')">Actividad</th>
             <th onclick="sortS('SP Real')">SP</th>
             <th onclick="sortS('Horas')">Horas</th>
@@ -528,7 +529,7 @@ function parseCSV(text) {
 
 // ── SPRINT CSV PARSER ──
 // Groups rows by "Fecha Sprint", sorts sprints newest-first, extracts unique members.
-// Expected CSV columns: Name, Propietario, Proyecto, Estado, Fecha Sprint, SP Real, Actividad
+// Expected CSV columns: Name, Propietario, Proyecto, Estado, Sprint, SP Real, Actividad
 // (plus optional Horas — gracefully handled if absent)
 function parseSprintCSV(text) {
   const rows = parseCSV(text);
@@ -543,11 +544,12 @@ function parseSprintCSV(text) {
     if (!sprintMap[sprintKey]) sprintMap[sprintKey] = [];
     sprintMap[sprintKey].push({
       Name:       row['Name']       || '',
+      Sprint:row['Sprint']|| '',
       Propietario:row['Propietario']|| '',
       Proyecto:   row['Proyecto']   || '',
       Estado:     row['Estado']     || '',
       Horas:      row['Horas']      || '',
-      'Fecha Sprint': sprintKey,
+      'Sprint': sprintKey,
       'SP Real':  row['SP Real']    || '',
       Actividad:  row['Actividad']  || '',
     });
