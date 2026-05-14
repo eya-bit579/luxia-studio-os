@@ -7,41 +7,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
-/* ── DARK THEME (default) ── */
-:root,[data-theme="dark"]{
-  --bg:#0e0e11;--bg2:#16161a;--bg3:#1e1e24;--bg4:#26262e;
-  --border:#2e2e38;--border2:#3a3a48;
-  --text:#f0efe8;--text2:#9998a8;--text3:#5a5a6a;
-  --accent:#c8a96e;--accentl:#c8a96e18;
-  --green:#4a9e7a;--greenl:#4a9e7a22;
-  --blue:#5a7ec8;--bluel:#5a7ec818;
-  --purple:#8a6ec8;--purplel:#8a6ec818;
-  --red:#c86a5a;--redl:#c86a5a18;
-  --amber:#c8944a;--amberl:#c8944a18;
-  --shadow:0 2px 8px rgba(0,0,0,.4);
-  --r:8px;
-}
-
-/* ── LIGHT THEME ── */
-[data-theme="light"]{
-  --bg:#f4f3ef;--bg2:#ffffff;--bg3:#f0eff9;--bg4:#e8e7f0;
-  --border:#dddce8;--border2:#cccbe0;
-  --text:#1a1a22;--text2:#5a5970;--text3:#9a99aa;
-  --accent:#a07840;--accentl:#a0784018;
-  --green:#2e7a5a;--greenl:#2e7a5a18;
-  --blue:#3a5ea8;--bluel:#3a5ea818;
-  --purple:#6a4ea8;--purplel:#6a4ea818;
-  --red:#a84a3a;--redl:#a84a3a18;
-  --amber:#a87030;--amberl:#a8703018;
-  --shadow:0 2px 8px rgba(0,0,0,.08);
-  --r:8px;
-}
-
+:root,[data-theme="dark"]{--bg:#0e0e11;--bg2:#16161a;--bg3:#1e1e24;--bg4:#26262e;--border:#2e2e38;--border2:#3a3a48;--text:#f0efe8;--text2:#9998a8;--text3:#5a5a6a;--accent:#c8a96e;--accentl:#c8a96e18;--green:#4a9e7a;--greenl:#4a9e7a22;--blue:#5a7ec8;--bluel:#5a7ec818;--purple:#8a6ec8;--purplel:#8a6ec818;--red:#c86a5a;--redl:#c86a5a18;--amber:#c8944a;--amberl:#c8944a18;--shadow:0 2px 8px rgba(0,0,0,.4);--r:8px}
+[data-theme="light"]{--bg:#f4f3ef;--bg2:#ffffff;--bg3:#f0eff9;--bg4:#e8e7f0;--border:#dddce8;--border2:#cccbe0;--text:#1a1a22;--text2:#5a5970;--text3:#9a99aa;--accent:#a07840;--accentl:#a0784018;--green:#2e7a5a;--greenl:#2e7a5a18;--blue:#3a5ea8;--bluel:#3a5ea818;--purple:#6a4ea8;--purplel:#6a4ea818;--red:#a84a3a;--redl:#a84a3a18;--amber:#a87030;--amberl:#a8703018;--shadow:0 2px 8px rgba(0,0,0,.08);--r:8px}
 html{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;font-size:14px;line-height:1.6;transition:background .2s,color .2s}
 body{height:100vh;display:flex;flex-direction:column;overflow:hidden}
-
-/* TOPBAR */
 .topbar{height:52px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:12px;flex-shrink:0;z-index:100;box-shadow:var(--shadow)}
 .logo{font-family:'Playfair Display',serif;font-size:16px;color:var(--accent);letter-spacing:1px;flex-shrink:0;margin-right:8px}
 .logo span{color:var(--text3);font-size:10px;font-family:'Syne',sans-serif;letter-spacing:2px;text-transform:uppercase;margin-left:6px}
@@ -54,185 +23,97 @@ body{height:100vh;display:flex;flex-direction:column;overflow:hidden}
 .sync-btn.loading{animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
 .sync-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
-.sync-dot.error{background:var(--red)}
-.sync-dot.loading{background:var(--amber)}
-
-/* THEME TOGGLE */
+.sync-dot.error{background:var(--red)}.sync-dot.loading{background:var(--amber)}
 .theme-toggle{width:32px;height:18px;border-radius:9px;background:var(--bg4);border:1px solid var(--border2);cursor:pointer;position:relative;flex-shrink:0;transition:background .2s}
 .theme-toggle::after{content:'';position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--text3);transition:transform .2s,background .2s}
 [data-theme="light"] .theme-toggle{background:var(--accentl);border-color:var(--accent)}
 [data-theme="light"] .theme-toggle::after{transform:translateX(14px);background:var(--accent)}
 .theme-icon{font-size:11px;cursor:pointer;color:var(--text3);user-select:none;flex-shrink:0}
-
 .user-pill{margin-left:auto;display:flex;align-items:center;gap:8px;padding:4px 10px;background:var(--bg3);border-radius:20px;border:1px solid var(--border)}
 .uav{width:22px;height:22px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:var(--bg)}
 .uname{font-size:11px;color:var(--text2);font-weight:500}
 .main{flex:1;overflow:hidden;display:flex;position:relative}
 .view{display:none;flex:1;overflow-y:auto;padding:20px;flex-direction:column;gap:14px}
 .view.active{display:flex}
-
-/* LOADING OVERLAY */
 .loading-overlay{position:absolute;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;z-index:50;transition:background .2s}
 .loading-overlay.hidden{display:none}
 .loading-spinner{width:36px;height:36px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .loading-text{font-size:13px;color:var(--text3)}
-.error-box{background:var(--redl);border:1px solid var(--red);border-radius:var(--r);padding:16px 20px;max-width:400px;text-align:center}
+.error-box{background:var(--redl);border:1px solid var(--red);border-radius:var(--r);padding:16px 20px;max-width:440px;text-align:center}
 .error-box h3{color:var(--red);font-size:14px;margin-bottom:6px}
 .error-box p{font-size:12px;color:var(--text2);line-height:1.5}
 .retry-btn{margin-top:12px;padding:7px 16px;border-radius:6px;border:1px solid var(--red);background:transparent;color:var(--red);font-family:'Syne',sans-serif;font-size:12px;font-weight:600;cursor:pointer}
 .retry-btn:hover{background:var(--redl)}
-
-/* STATS */
 .stats-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;flex-shrink:0}
 .stat{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
 .stat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
-.stat.g::before{background:var(--green)}.stat.a::before{background:var(--amber)}
-.stat.b::before{background:var(--blue)}.stat.p::before{background:var(--purple)}.stat.ac::before{background:var(--accent)}
+.stat.g::before{background:var(--green)}.stat.a::before{background:var(--amber)}.stat.b::before{background:var(--blue)}.stat.p::before{background:var(--purple)}.stat.ac::before{background:var(--accent)}
 .stat-n{font-family:'Playfair Display',serif;font-size:30px;line-height:1;margin-bottom:3px}
-.stat.g .stat-n{color:var(--green)}.stat.a .stat-n{color:var(--amber)}
-.stat.b .stat-n{color:var(--blue)}.stat.p .stat-n{color:var(--purple)}.stat.ac .stat-n{color:var(--accent)}
+.stat.g .stat-n{color:var(--green)}.stat.a .stat-n{color:var(--amber)}.stat.b .stat-n{color:var(--blue)}.stat.p .stat-n{color:var(--purple)}.stat.ac .stat-n{color:var(--accent)}
 .stat-l{font-size:10px;color:var(--text3);letter-spacing:.5px;text-transform:uppercase;line-height:1.3}
-
-/* PANEL */
 .panel{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;flex-shrink:0;box-shadow:var(--shadow)}
 .ph{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .pt{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text2);flex-shrink:0}
 .pb{padding:16px}
-
-/* TOOLBAR */
 .toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .si{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:6px 10px;color:var(--text);font-family:'Syne',sans-serif;font-size:12px;outline:none;transition:border .15s}
-.si:focus{border-color:var(--accent)}
-.si::placeholder{color:var(--text3)}
+.si:focus{border-color:var(--accent)}.si::placeholder{color:var(--text3)}
 select.si{color:var(--text2);cursor:pointer}
-
-/* SORTABLE TABLE */
 .dt{width:100%;border-collapse:collapse}
 .dt thead th{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);padding:8px 10px;border-bottom:1px solid var(--border);text-align:left;font-weight:600;white-space:nowrap;cursor:pointer;user-select:none;position:sticky;top:0;background:var(--bg2);z-index:2}
-.dt thead th:hover{color:var(--text2)}
-.dt thead th.sort-asc::after{content:' ↑';color:var(--accent)}
-.dt thead th.sort-desc::after{content:' ↓';color:var(--accent)}
-.dt tbody tr{border-bottom:1px solid var(--border);cursor:pointer;transition:background .1s}
-.dt tbody tr:last-child{border-bottom:none}
-.dt tbody tr:hover{background:var(--bg3)}
-.dt td{padding:9px 10px;vertical-align:middle;font-size:13px}
-
-/* BADGE */
+.dt thead th:hover{color:var(--text2)}.dt thead th.sort-asc::after{content:' ↑';color:var(--accent)}.dt thead th.sort-desc::after{content:' ↓';color:var(--accent)}
+.dt tbody tr{border-bottom:1px solid var(--border);cursor:pointer;transition:background .1s}.dt tbody tr:last-child{border-bottom:none}.dt tbody tr:hover{background:var(--bg3)}.dt td{padding:9px 10px;vertical-align:middle;font-size:13px}
 .badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap}
-.bg-g{background:var(--greenl);color:var(--green)}.bg-b{background:var(--bluel);color:var(--blue)}
-.bg-a{background:var(--amberl);color:var(--amber)}.bg-p{background:var(--purplel);color:var(--purple)}
-.bg-r{background:var(--redl);color:var(--red)}.bg-ac{background:var(--accentl);color:var(--accent)}
-.bg-gr{background:var(--bg4);color:var(--text2)}
-
-/* PROGRESS */
-.pw{display:flex;align-items:center;gap:6px}
-.pb2{flex:1;height:4px;background:var(--bg4);border-radius:2px;overflow:hidden;min-width:50px}
-.pf{height:100%;border-radius:2px}
-.pp{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);min-width:28px;text-align:right}
-
-/* SPRINT TABLE */
+.bg-g{background:var(--greenl);color:var(--green)}.bg-b{background:var(--bluel);color:var(--blue)}.bg-a{background:var(--amberl);color:var(--amber)}.bg-p{background:var(--purplel);color:var(--purple)}.bg-r{background:var(--redl);color:var(--red)}.bg-ac{background:var(--accentl);color:var(--accent)}.bg-gr{background:var(--bg4);color:var(--text2)}
+.pw{display:flex;align-items:center;gap:6px}.pb2{flex:1;height:4px;background:var(--bg4);border-radius:2px;overflow:hidden;min-width:50px}.pf{height:100%;border-radius:2px}.pp{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);min-width:28px;text-align:right}
 .sprint-tbl{width:100%;border-collapse:collapse}
 .sprint-tbl thead th{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);padding:8px 12px;border-bottom:1px solid var(--border);text-align:left;font-weight:600;cursor:pointer;user-select:none;white-space:nowrap;position:sticky;top:0;background:var(--bg2);z-index:2}
-.sprint-tbl thead th:hover{color:var(--text2)}
-.sprint-tbl thead th.sort-asc::after{content:' ↑';color:var(--accent)}
-.sprint-tbl thead th.sort-desc::after{content:' ↓';color:var(--accent)}
-.sprint-tbl tbody tr{border-bottom:1px solid var(--border);transition:background .1s}
-.sprint-tbl tbody tr:last-child{border-bottom:none}
-.sprint-tbl tbody tr:hover{background:var(--bg3)}
-.sprint-tbl td{padding:9px 12px;vertical-align:middle;font-size:12px}
+.sprint-tbl thead th:hover{color:var(--text2)}.sprint-tbl thead th.sort-asc::after{content:' ↑';color:var(--accent)}.sprint-tbl thead th.sort-desc::after{content:' ↓';color:var(--accent)}
+.sprint-tbl tbody tr{border-bottom:1px solid var(--border);transition:background .1s}.sprint-tbl tbody tr:last-child{border-bottom:none}.sprint-tbl tbody tr:hover{background:var(--bg3)}.sprint-tbl td{padding:9px 12px;vertical-align:middle;font-size:12px}
 .act-pill{display:inline-block;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:600}
-
-/* DETAIL */
 .dh{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:20px 22px;flex-shrink:0;box-shadow:var(--shadow)}
-.dbc{font-size:11px;color:var(--text3);margin-bottom:10px;cursor:pointer;display:inline-flex;align-items:center;gap:5px}
-.dbc:hover{color:var(--text2)}
+.dbc{font-size:11px;color:var(--text3);margin-bottom:10px;cursor:pointer;display:inline-flex;align-items:center;gap:5px}.dbc:hover{color:var(--text2)}
 .dn{font-family:'Playfair Display',serif;font-size:24px;margin-bottom:6px}
 .dmr{display:flex;gap:20px;flex-wrap:wrap;margin-top:4px;align-items:center}
-.dmi{display:flex;flex-direction:column;gap:3px}
-.dml{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--text3)}
-.dmv{font-size:13px;font-weight:500}
+.dmi{display:flex;flex-direction:column;gap:3px}.dml{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--text3)}.dmv{font-size:13px;font-weight:500}
 .dgrid{display:grid;grid-template-columns:1fr 300px;gap:12px;min-height:0}
-.si-row{border-bottom:1px solid var(--border)}
-.si-row:last-child{border-bottom:none}
-.sr{padding:10px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:background .1s}
-.sr:hover{background:var(--bg3)}
+.si-row{border-bottom:1px solid var(--border)}.si-row:last-child{border-bottom:none}
+.sr{padding:10px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:background .1s}.sr:hover{background:var(--bg3)}
 .sic{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
-.sin{font-size:13px;font-weight:600}
-.sis{font-size:11px;color:var(--text3)}
-.stl{display:none}
-.stl.open{display:block;background:var(--bg3);border-top:1px solid var(--border)}
-.str{padding:7px 14px 7px 50px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);font-size:12px}
-.str:last-child{border-bottom:none}
+.sin{font-size:13px;font-weight:600}.sis{font-size:11px;color:var(--text3)}
+.stl{display:none}.stl.open{display:block;background:var(--bg3);border-top:1px solid var(--border)}
+.str{padding:7px 14px 7px 50px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);font-size:12px}.str:last-child{border-bottom:none}
 .stc{width:13px;height:13px;border-radius:3px;border:1.5px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s}
-.stc.done{background:var(--green);border-color:var(--green)}
-.stc.done::after{content:'✓';font-size:8px;color:white}
-.stn{flex:1;color:var(--text2);font-size:12px}
-.stn.done{text-decoration:line-through;color:var(--text3)}
-.hito-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--border);font-size:13px}
-.hito-item:last-child{border-bottom:none}
+.stc.done{background:var(--green);border-color:var(--green)}.stc.done::after{content:'✓';font-size:8px;color:white}
+.stn{flex:1;color:var(--text2);font-size:12px}.stn.done{text-decoration:line-through;color:var(--text3)}
+.hito-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--border);font-size:13px}.hito-item:last-child{border-bottom:none}
 .hito-check{width:18px;height:18px;border-radius:50%;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.hito-check.done{background:var(--green);border-color:var(--green)}
-.hito-check.done::after{content:'✓';font-size:9px;color:white;font-weight:700}
-.hito-check.progress{background:var(--amberl);border-color:var(--amber)}
-.hito-check.progress::after{content:'~';font-size:10px;color:var(--amber);font-weight:700}
-.hito-name{flex:1;color:var(--text2)}
-.hito-name.done{color:var(--green);font-weight:500}
+.hito-check.done{background:var(--green);border-color:var(--green)}.hito-check.done::after{content:'✓';font-size:9px;color:white;font-weight:700}
+.hito-check.progress{background:var(--amberl);border-color:var(--amber)}.hito-check.progress::after{content:'~';font-size:10px;color:var(--amber);font-weight:700}
+.hito-name{flex:1;color:var(--text2)}.hito-name.done{color:var(--green);font-weight:500}
 .tav{border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;color:var(--bg);flex-shrink:0}
 .sprint-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);padding:4px 8px;background:var(--bg4);border-radius:4px}
 .last-sync{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace}
-
-/* ── GATES ── */
 .gate-tbl{width:100%;border-collapse:collapse}
 .gate-tbl thead th{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);padding:8px 12px;border-bottom:1px solid var(--border);text-align:left;font-weight:600;white-space:nowrap;cursor:pointer;user-select:none;position:sticky;top:0;background:var(--bg2);z-index:2}
-.gate-tbl thead th:hover{color:var(--text2)}
-.gate-tbl thead th.sort-asc::after{content:' ↑';color:var(--accent)}
-.gate-tbl thead th.sort-desc::after{content:' ↓';color:var(--accent)}
-.gate-tbl tbody tr{border-bottom:1px solid var(--border);transition:background .1s}
-.gate-tbl tbody tr:last-child{border-bottom:none}
-.gate-tbl tbody tr:hover{background:var(--bg3)}
-.gate-tbl td{padding:10px 12px;vertical-align:middle;font-size:12px}
-
-/* Gate status badges */
-.gs-flujo{background:var(--bluel);color:var(--blue)}
-.gs-abierto{background:var(--amberl);color:var(--amber)}
-.gs-vencido{background:var(--redl);color:var(--red)}
-.gs-bypass{background:var(--purplel);color:var(--purple)}
-.gs-cerrado{background:var(--greenl);color:var(--green)}
-
-/* Countdown pill */
+.gate-tbl thead th:hover{color:var(--text2)}.gate-tbl thead th.sort-asc::after{content:' ↑';color:var(--accent)}.gate-tbl thead th.sort-desc::after{content:' ↓';color:var(--accent)}
+.gate-tbl tbody tr{border-bottom:1px solid var(--border);transition:background .1s}.gate-tbl tbody tr:last-child{border-bottom:none}.gate-tbl tbody tr:hover{background:var(--bg3)}.gate-tbl td{padding:10px 12px;vertical-align:middle;font-size:12px}
+.gs-flujo{background:var(--bluel);color:var(--blue)}.gs-abierto{background:var(--amberl);color:var(--amber)}.gs-vencido{background:var(--redl);color:var(--red)}.gs-bypass{background:var(--purplel);color:var(--purple)}.gs-cerrado{background:var(--greenl);color:var(--green)}
 .countdown{font-family:'JetBrains Mono',monospace;font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600}
-.cd-ok{background:var(--greenl);color:var(--green)}
-.cd-warn{background:var(--amberl);color:var(--amber)}
-.cd-late{background:var(--redl);color:var(--red)}
-.cd-none{color:var(--text3)}
-
-/* Conditions bar */
-.cond-bar{display:flex;align-items:center;gap:6px}
-.cond-track{width:60px;height:4px;background:var(--bg4);border-radius:2px;overflow:hidden}
-.cond-fill{height:100%;border-radius:2px;background:var(--green)}
-.cond-txt{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2)}
-
-/* Gate transition arrow */
-.gate-trans{display:flex;align-items:center;gap:5px;font-size:11px}
-.gate-trans .arr{color:var(--text3)}
-
-/* Note banner */
+.cd-ok{background:var(--greenl);color:var(--green)}.cd-warn{background:var(--amberl);color:var(--amber)}.cd-late{background:var(--redl);color:var(--red)}.cd-none{color:var(--text3)}
+.cond-bar{display:flex;align-items:center;gap:6px}.cond-track{width:60px;height:4px;background:var(--bg4);border-radius:2px;overflow:hidden}.cond-fill{height:100%;border-radius:2px;background:var(--green)}.cond-txt{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2)}
 .note-banner{background:var(--amberl);border:1px solid var(--amber);border-radius:var(--r);padding:10px 14px;font-size:12px;color:var(--amber);display:flex;align-items:center;gap:8px;flex-shrink:0}
 .note-banner strong{font-weight:700}
-
-::-webkit-scrollbar{width:5px;height:5px}
-::-webkit-scrollbar-track{background:var(--bg2)}
-::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
 </style>
 </head>
 <body>
-
 <div class="topbar">
-  <div class="logo">Luxia Labs <span>Studio OS</span></div>
+  <div class="logo">Luxia Labs <span>Studio OS 1.2</span></div>
   <div class="nav">
     <button class="nav-btn active" id="nav-portfolio" onclick="showView('portfolio')">Portafolio</button>
-    <button class="nav-btn" id="nav-sprint" onclick="showView('sprint')">Sprint Actual</button>
+    <button class="nav-btn" id="nav-sprint" onclick="showView('sprint')">Sprints</button>
     <button class="nav-btn" id="nav-gates" onclick="showView('gates')">Gates</button>
     <button class="nav-btn" id="back-btn" onclick="showView('portfolio')" style="display:none;color:var(--text3)">← Proyectos</button>
   </div>
@@ -243,20 +124,16 @@ select.si{color:var(--text2);cursor:pointer}
   <span class="last-sync" id="last-sync"></span>
   <span class="theme-icon" id="theme-icon" title="Cambiar tema">☀️</span>
   <div class="theme-toggle" onclick="toggleTheme()" title="Cambiar tema"></div>
-  <div class="user-pill">
-    <div class="uav">EM</div>
-    <span class="uname">Eliseo Montoya</span>
-  </div>
+  <div class="user-pill"><div class="uav">EM</div><span class="uname">Eliseo Montoya</span></div>
 </div>
 
 <div class="main">
-  <!-- LOADING -->
   <div class="loading-overlay" id="loading-overlay">
     <div class="loading-spinner"></div>
-    <div class="loading-text" id="loading-text">Cargando datos desde Google Sheets...</div>
+    <div class="loading-text" id="loading-text">Cargando datos...</div>
     <div class="error-box" id="error-box" style="display:none">
       <h3>No se pudo cargar el Sheet</h3>
-      <p>Verifica que el Sheet esté publicado como CSV y que tenga acceso público.</p>
+      <p id="error-msg">Error desconocido.</p>
       <button class="retry-btn" onclick="syncSheets()">Reintentar</button>
     </div>
   </div>
@@ -275,9 +152,7 @@ select.si{color:var(--text2);cursor:pointer}
         <span class="pt">Todos los proyectos</span>
         <div class="toolbar">
           <input class="si" placeholder="Buscar proyecto..." oninput="filterP(this.value)" style="width:180px">
-          <select class="si" onchange="filterPMem(this.value)" id="pmem-f">
-            <option value="">Todo el equipo</option>
-          </select>
+          <select class="si" onchange="filterPMem(this.value)" id="pmem-f"><option value="">Todo el equipo</option></select>
           <select class="si" onchange="filterPStage(this.value)">
             <option value="">Todas las etapas</option>
             <option>1. Conceptual</option><option>2. Anteproyecto</option>
@@ -286,17 +161,11 @@ select.si{color:var(--text2);cursor:pointer}
         </div>
       </div>
       <div style="overflow-y:auto;flex:1">
-        <table class="dt">
-          <thead><tr>
-            <th onclick="sortP('name')">Proyecto</th>
-            <th onclick="sortP('stage')">Etapa</th>
-            <th onclick="sortP('lead')">Lead Architect</th>
-            <th onclick="sortP('pct')" style="min-width:140px">Progreso</th>
-            <th onclick="sortP('total')">Tareas totales</th>
-            <th onclick="sortP('sprint')">Sprint actual</th>
-          </tr></thead>
-          <tbody id="ptbody"></tbody>
-        </table>
+        <table class="dt"><thead><tr>
+          <th onclick="sortP('name')">Proyecto</th><th onclick="sortP('stage')">Etapa</th>
+          <th onclick="sortP('lead')">Lead Architect</th><th onclick="sortP('pct')" style="min-width:140px">Progreso</th>
+          <th onclick="sortP('total')">Tareas totales</th><th onclick="sortP('sprint')">Sprint actual</th>
+        </tr></thead><tbody id="ptbody"></tbody></table>
       </div>
     </div>
   </div>
@@ -311,7 +180,10 @@ select.si{color:var(--text2);cursor:pointer}
     </div>
     <div class="panel" style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column">
       <div class="ph">
-        <span class="sprint-label" id="sprint-name-label">—</span>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <span class="sprint-label" id="sprint-name-label">—</span>
+          <select class="si" onchange="switchSprint(this.value)" id="sprint-sel" style="font-size:11px;padding:4px 8px"></select>
+        </div>
         <div class="toolbar">
           <input class="si" placeholder="Buscar tarea..." oninput="filterSprint(this.value)" style="width:160px">
           <select class="si" onchange="filterSMem(this.value)" id="smem-f"><option value="">Todo el equipo</option></select>
@@ -320,18 +192,12 @@ select.si{color:var(--text2);cursor:pointer}
         </div>
       </div>
       <div style="overflow-y:auto;flex:1">
-        <table class="sprint-tbl">
-          <thead><tr>
-            <th onclick="sortS('Name')">Tarea</th>
-            <th onclick="sortS('Proyecto')">Proyecto</th>
-            <th onclick="sortS('Propietario')">Responsable</th>
-            <th onclick="sortS('Estado')">Estado</th>
-            <th onclick="sortS('Actividad')">Actividad</th>
-            <th onclick="sortS('SP Real')">SP</th>
-            <th onclick="sortS('Horas')">Horas</th>
-          </tr></thead>
-          <tbody id="stbody"></tbody>
-        </table>
+        <table class="sprint-tbl"><thead><tr>
+          <th onclick="sortS('Name')">Tarea</th><th onclick="sortS('Proyecto')">Proyecto</th>
+          <th onclick="sortS('Propietario')">Responsable</th><th onclick="sortS('Estado')">Estado</th>
+          <th onclick="sortS('Actividad')">Actividad</th><th onclick="sortS('SP Real')">SP</th>
+          <th onclick="sortS('Horas')">Horas</th>
+        </tr></thead><tbody id="stbody"></tbody></table>
       </div>
     </div>
   </div>
@@ -345,10 +211,7 @@ select.si{color:var(--text2);cursor:pointer}
       <div class="stat r" style="background:var(--bg2);border:1px solid var(--border)"><div class="stat-n" style="color:var(--red)" id="gs-vencidos">—</div><div class="stat-l">Vencidos</div></div>
       <div class="stat g"><div class="stat-n" id="gs-cerrados">—</div><div class="stat-l">Cerrados este mes</div></div>
     </div>
-    <div class="note-banner">
-      <span>⚠️</span>
-      <span><strong>Data de ejemplo.</strong> Esta vista se conectará a las columnas de Gate en el Board de Proyectos una vez configuradas en Monday/Sheets.</span>
-    </div>
+    <div class="note-banner"><span>⚠️</span><span><strong>Data de ejemplo.</strong> Se conectará al Board de Proyectos una vez configuradas las columnas de Gate en Monday/Sheets.</span></div>
     <div class="panel" style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column">
       <div class="ph">
         <span class="pt">Estado de Gates por Proyecto</span>
@@ -356,31 +219,19 @@ select.si{color:var(--text2);cursor:pointer}
           <input class="si" placeholder="Buscar proyecto..." oninput="filterG(this.value)" style="width:180px">
           <select class="si" onchange="filterGStatus(this.value)" id="gstatus-f">
             <option value="">Todos los estados</option>
-            <option value="En flujo">En flujo</option>
-            <option value="Gate abierto">Gate abierto</option>
-            <option value="Gate vencido">Gate vencido</option>
-            <option value="Bypass">Bypass</option>
-            <option value="Cerrado">Cerrado</option>
+            <option value="En flujo">En flujo</option><option value="Gate abierto">Gate abierto</option>
+            <option value="Gate vencido">Gate vencido</option><option value="Bypass">Bypass</option><option value="Cerrado">Cerrado</option>
           </select>
-          <select class="si" onchange="filterGLead(this.value)" id="glead-f">
-            <option value="">Todos los leads</option>
-          </select>
+          <select class="si" onchange="filterGLead(this.value)" id="glead-f"><option value="">Todos los leads</option></select>
         </div>
       </div>
       <div style="overflow-y:auto;flex:1">
-        <table class="gate-tbl">
-          <thead><tr>
-            <th onclick="sortG('proyecto')">Proyecto</th>
-            <th onclick="sortG('gate')">Gate</th>
-            <th onclick="sortG('estado')">Estado</th>
-            <th onclick="sortG('aprobador')">Aprobador</th>
-            <th onclick="sortG('fechaLimite')">Fecha límite</th>
-            <th>Días restantes</th>
-            <th onclick="sortG('condiciones')">Condiciones</th>
-            <th>Notas</th>
-          </tr></thead>
-          <tbody id="gtbody"></tbody>
-        </table>
+        <table class="gate-tbl"><thead><tr>
+          <th onclick="sortG('proyecto')">Proyecto</th><th onclick="sortG('gate')">Gate</th>
+          <th onclick="sortG('estado')">Estado</th><th onclick="sortG('aprobador')">Aprobador</th>
+          <th onclick="sortG('fechaLimite')">Fecha límite</th><th>Días restantes</th>
+          <th onclick="sortG('condiciones')">Condiciones</th><th>Notas</th>
+        </tr></thead><tbody id="gtbody"></tbody></table>
       </div>
     </div>
   </div>
@@ -394,36 +245,23 @@ select.si{color:var(--text2);cursor:pointer}
     </div>
     <div class="dgrid" style="flex:1;min-height:0">
       <div style="display:flex;flex-direction:column;gap:12px;overflow-y:auto">
-        <div class="panel">
-          <div class="ph"><span class="pt">Historial de tareas por sprint</span></div>
-          <div id="d-sprints"></div>
-        </div>
+        <div class="panel"><div class="ph"><span class="pt">Historial de tareas por sprint</span></div><div id="d-sprints"></div></div>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px;overflow-y:auto">
-        <div class="panel">
-          <div class="ph"><span class="pt">Hitos institucionales</span></div>
-          <div id="d-hitos"></div>
-        </div>
-        <div class="panel">
-          <div class="ph"><span class="pt">Equipo en este proyecto</span></div>
-          <div class="pb" id="d-team" style="display:flex;flex-wrap:wrap;gap:6px"></div>
-        </div>
-        <div class="panel">
-          <div class="ph"><span class="pt">Actividades</span></div>
-          <div class="pb" id="d-activities" style="display:flex;flex-wrap:wrap;gap:5px"></div>
-        </div>
+        <div class="panel"><div class="ph"><span class="pt">Hitos institucionales</span></div><div id="d-hitos"></div></div>
+        <div class="panel"><div class="ph"><span class="pt">Equipo en este proyecto</span></div><div class="pb" id="d-team" style="display:flex;flex-wrap:wrap;gap:6px"></div></div>
+        <div class="panel"><div class="ph"><span class="pt">Actividades</span></div><div class="pb" id="d-activities" style="display:flex;flex-wrap:wrap;gap:5px"></div></div>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-// ── CSV URLS ──
-const SHEET_BASE = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQDxRv7q-MYJxMUJ8Rx_qjxS8r7d-0LAol6a0BWT8gIzs0H9gbljlg9-z0GGQzvypbo1Diz97-NLJe2/pub";
+// ── SHEET CONFIG ──
+const SHEET_BASE   = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQDxRv7q-MYJxMUJ8Rx_qjxS8r7d-0LAol6a0BWT8gIzs0H9gbljlg9-z0GGQzvypbo1Diz97-NLJe2/pub";
 const PROJECTS_GID = "185101073";
 const SPRINT_GID   = "1798622457";
 
-// Multiple CORS proxies tried in order until one works
 const PROXIES = [
   url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
   url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
@@ -439,570 +277,443 @@ async function fetchCSV(gid, label) {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const text = await res.text();
       if (!text || text.trim().length < 10) throw new Error('Respuesta vacía');
-      // Sanity-check: Google error pages start with <!DOCTYPE
       if (text.trim().startsWith('<!')) throw new Error('Recibió HTML en vez de CSV');
       return text;
-    } catch(e) {
-      errors.push(e.message);
-    }
+    } catch(e) { errors.push(e.message); }
   }
   throw new Error(`No se pudo cargar ${label}. Intentos: ${errors.join(' | ')}`);
 }
 
-// ── SPRINT DATA (populated dynamically) ──
+// ── STATE ──
 let SPRINT_DATA = { sprints: [], members: [] };
+let PROJECTS = [];
+let activeSprintIdx = 0;
 
 // ── GATE DEFINITIONS ──
 const GATE_DEFS = {
-  'Gate 1→2': { from:'1. Conceptual', to:'2. Anteproyecto', conditions:['Esquema conceptual aprobado','Plantas preliminares revisadas','Esquema estructural revisado con ingeniero','Tabla de metrajes completada','Cierre/Aprobación formal del cliente'], aprobadorDefault:'Marielmi', ventana:5 },
-  'Gate 2→3': { from:'2. Anteproyecto', to:'3. Ejecutivo', conditions:['Modelado Revit completo','Anteproyecto ADN entregado','Cotizaciones de ingenierías recibidas','Renders preliminares aprobados','Cierre/Aprobación formal del cliente'], aprobadorDefault:'Marielmi', ventana:5 },
-  'Gate 2.5':  { from:'2. Anteproyecto', to:'2.5 Paq. Venta', conditions:['Plantas de ventas con metrajes','Moodboard interior aprobado','Cotización renders/brochure aprobada','Renderista asignado'], aprobadorDefault:'Marielmi', ventana:3 },
-  'Gate 3→4': { from:'3. Ejecutivo', to:'4. Constructivo', conditions:['Aprobación MIVED/MITUR recibida','Juego de planos ejecutivos firmado','Ingenierías homologadas','Cierre/Aprobación formal del cliente'], aprobadorDefault:'Héctor / Jesús', ventana:7 },
+  'Gate 1→2': { from:'1. Conceptual',   to:'2. Anteproyecto',  ventana:5 },
+  'Gate 2→3': { from:'2. Anteproyecto', to:'3. Ejecutivo',      ventana:5 },
+  'Gate 2.5':  { from:'2. Anteproyecto', to:'2.5 Paq. Venta',  ventana:3 },
+  'Gate 3→4': { from:'3. Ejecutivo',    to:'4. Constructivo',  ventana:7 },
 };
 
 const GATE_EXAMPLE = [
-  { proyecto:'Bohio - Cabarete',       gate:'Gate 1→2', estado:'Gate abierto', aprobador:'Marielmi', fechaLimite:'2026-05-20', condicionesCumplidas:3, totalCondiciones:5, notas:'' },
-  { proyecto:'Apex Parq Towers',        gate:'Gate 1→2', estado:'Gate abierto', aprobador:'Marielmi', fechaLimite:'2026-05-22', condicionesCumplidas:4, totalCondiciones:5, notas:'' },
-  { proyecto:'Choco Hills - Masterplan',gate:'Gate 1→2', estado:'En flujo',     aprobador:'Marielmi', fechaLimite:'2026-06-01', condicionesCumplidas:2, totalCondiciones:5, notas:'' },
-  { proyecto:'Casa Robert',             gate:'Gate 1→2', estado:'En flujo',     aprobador:'Marielmi', fechaLimite:'2026-06-10', condicionesCumplidas:1, totalCondiciones:5, notas:'' },
-  { proyecto:'Cinter - Cruise on the Land', gate:'Gate 1→2', estado:'En flujo', aprobador:'Marielmi', fechaLimite:'2026-06-05', condicionesCumplidas:2, totalCondiciones:5, notas:'' },
-  { proyecto:'Torre Alma Rosa - SDE',   gate:'Gate 2→3', estado:'Gate abierto', aprobador:'Marielmi', fechaLimite:'2026-05-18', condicionesCumplidas:4, totalCondiciones:5, notas:'Esperando aprobación renders' },
-  { proyecto:'Serrano Windsunset',      gate:'Gate 2→3', estado:'Gate vencido', aprobador:'Marielmi', fechaLimite:'2026-05-05', condicionesCumplidas:3, totalCondiciones:5, notas:'Pendiente respuesta cliente' },
-  { proyecto:'Golden Lake Cap Cana',    gate:'Gate 2.5',  estado:'Gate abierto', aprobador:'Marielmi', fechaLimite:'2026-05-22', condicionesCumplidas:3, totalCondiciones:4, notas:'' },
-  { proyecto:'The Point 2',             gate:'Gate 2.5',  estado:'En flujo',     aprobador:'Marielmi', fechaLimite:'2026-05-30', condicionesCumplidas:2, totalCondiciones:4, notas:'' },
-  { proyecto:'BP - Rivieras del Este',  gate:'Gate 3→4', estado:'Bypass',       aprobador:'Hector Marrero', fechaLimite:'2026-05-10', condicionesCumplidas:3, totalCondiciones:4, notas:'Aprobador original no respondió en ventana de 7 días' },
-  { proyecto:'Kaya - Punta Cana',       gate:'Gate 3→4', estado:'En flujo',     aprobador:'Jesús Miguel Pérez Molina', fechaLimite:'2026-06-15', condicionesCumplidas:2, totalCondiciones:4, notas:'' },
-  { proyecto:'Travieso Cabarete',       gate:'Gate 3→4', estado:'Cerrado',      aprobador:'Jesús Miguel Pérez Molina', fechaLimite:'2026-04-30', condicionesCumplidas:4, totalCondiciones:4, notas:'Cerrado en tiempo' },
-  { proyecto:'Pedreira - Torre Villa Olga', gate:'Gate 3→4', estado:'En flujo', aprobador:'Harold Ortiz Méndez', fechaLimite:'2026-06-20', condicionesCumplidas:1, totalCondiciones:4, notas:'' },
+  { proyecto:'Bohio - Cabarete',           gate:'Gate 1→2', estado:'Gate abierto', aprobador:'Marielmi',                  fechaLimite:'2026-05-20', condicionesCumplidas:3, totalCondiciones:5, notas:'' },
+  { proyecto:'Apex Parq Towers',            gate:'Gate 1→2', estado:'Gate abierto', aprobador:'Marielmi',                  fechaLimite:'2026-05-22', condicionesCumplidas:4, totalCondiciones:5, notas:'' },
+  { proyecto:'Choco Hills - Masterplan',    gate:'Gate 1→2', estado:'En flujo',     aprobador:'Marielmi',                  fechaLimite:'2026-06-01', condicionesCumplidas:2, totalCondiciones:5, notas:'' },
+  { proyecto:'Casa Robert',                 gate:'Gate 1→2', estado:'En flujo',     aprobador:'Marielmi',                  fechaLimite:'2026-06-10', condicionesCumplidas:1, totalCondiciones:5, notas:'' },
+  { proyecto:'Cinter - Cruise on the Land', gate:'Gate 1→2', estado:'En flujo',     aprobador:'Marielmi',                  fechaLimite:'2026-06-05', condicionesCumplidas:2, totalCondiciones:5, notas:'' },
+  { proyecto:'Torre Alma Rosa - SDE',       gate:'Gate 2→3', estado:'Gate abierto', aprobador:'Marielmi',                  fechaLimite:'2026-05-18', condicionesCumplidas:4, totalCondiciones:5, notas:'Esperando aprobación renders' },
+  { proyecto:'Serrano Windsunset',          gate:'Gate 2→3', estado:'Gate vencido', aprobador:'Marielmi',                  fechaLimite:'2026-05-05', condicionesCumplidas:3, totalCondiciones:5, notas:'Pendiente respuesta cliente' },
+  { proyecto:'Golden Lake Cap Cana',        gate:'Gate 2.5',  estado:'Gate abierto', aprobador:'Marielmi',                 fechaLimite:'2026-05-22', condicionesCumplidas:3, totalCondiciones:4, notas:'' },
+  { proyecto:'The Point 2',                 gate:'Gate 2.5',  estado:'En flujo',     aprobador:'Marielmi',                 fechaLimite:'2026-05-30', condicionesCumplidas:2, totalCondiciones:4, notas:'' },
+  { proyecto:'BP - Rivieras del Este',      gate:'Gate 3→4', estado:'Bypass',       aprobador:'Hector Marrero',            fechaLimite:'2026-05-10', condicionesCumplidas:3, totalCondiciones:4, notas:'Aprobador original no respondió en ventana de 7 días' },
+  { proyecto:'Kaya - Punta Cana',           gate:'Gate 3→4', estado:'En flujo',     aprobador:'Jesús Miguel Pérez Molina', fechaLimite:'2026-06-15', condicionesCumplidas:2, totalCondiciones:4, notas:'' },
+  { proyecto:'Travieso Cabarete',           gate:'Gate 3→4', estado:'Cerrado',      aprobador:'Jesús Miguel Pérez Molina', fechaLimite:'2026-04-30', condicionesCumplidas:4, totalCondiciones:4, notas:'Cerrado en tiempo' },
+  { proyecto:'Pedreira - Torre Villa Olga', gate:'Gate 3→4', estado:'En flujo',     aprobador:'Harold Ortiz Méndez',       fechaLimite:'2026-06-20', condicionesCumplidas:1, totalCondiciones:4, notas:'' },
 ];
 
 // ── THEME ──
-function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  document.getElementById('theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
-  localStorage.setItem('ll-theme', theme);
-}
-function toggleTheme() {
-  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-}
-(function(){ applyTheme(localStorage.getItem('ll-theme') || 'dark'); })();
+function applyTheme(t) { document.documentElement.setAttribute('data-theme',t); document.getElementById('theme-icon').textContent=t==='dark'?'☀️':'🌙'; localStorage.setItem('ll-theme',t); }
+function toggleTheme() { applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'); }
+(function(){ applyTheme(localStorage.getItem('ll-theme')||'dark'); })();
 
 // ── HELPERS ──
 const MC=['#c8a96e','#4a9e7a','#5a7ec8','#8a6ec8','#c86a5a','#c8944a','#6ec8b8','#c86ea8','#9e7a4a','#7ac8a0','#a06ec8','#c8c86a','#c8a96e','#4a9e7a'];
 const STAGE_C={'1. Conceptual':'bg-b','2. Anteproyecto':'bg-g','2.5 Paq. Venta':'bg-ac','3. Ejecutivo':'bg-p','4. Constructivo':'bg-r'};
 const ACT_C={'Diseño':'#5a7ec8','Modelado':'#4a9e7a','Documentación':'#8a6ec8','Dictámenes':'#c8944a','Renders':'#c86a5a','Renders In-House':'#c86a5a','Presentación':'#c8a96e','Coordinación/Scrum':'#6ec8b8'};
+function mc(n){const i=SPRINT_DATA.members.indexOf(n);return MC[(i>=0?i:n.length)%MC.length]||'#888';}
+function initials(n){const p=n.trim().split(' ');return p.length>=2?(p[0][0]+p[p.length-1][0]).toUpperCase():n.slice(0,2).toUpperCase();}
+function av(name,sz=20){const c=mc(name),id=initials(name);return `<div class="tav" style="background:${c};width:${sz}px;height:${sz}px;font-size:${Math.round(sz*.38)}px">${id}</div>`;}
+function pct_c(p){return p>=80?'var(--green)':p>=40?'var(--amber)':'var(--blue)';}
+function prog(p){const c=pct_c(p);return `<div class="pw"><div class="pb2"><div class="pf" style="width:${p}%;background:${c}"></div></div><span class="pp">${p}%</span></div>`;}
+function badge(txt,cls){return `<span class="badge ${cls||'bg-gr'}">${txt}</span>`;}
+function stageBadge(s){return badge(s||'—',STAGE_C[s]||'bg-gr');}
 
-const _memberIdx = {};
-function mc(name) {
-  if (_memberIdx[name] === undefined) {
-    const i = SPRINT_DATA.members.indexOf(name);
-    _memberIdx[name] = i >= 0 ? i : Object.keys(_memberIdx).length;
-  }
-  return MC[_memberIdx[name] % MC.length] || '#888';
-}
-function initials(n){ const p=n.trim().split(' '); return p.length>=2?(p[0][0]+p[p.length-1][0]).toUpperCase():n.slice(0,2).toUpperCase(); }
-function av(name,sz=20){ const c=mc(name),id=initials(name); return `<div class="tav" style="background:${c};width:${sz}px;height:${sz}px;font-size:${Math.round(sz*.38)}px">${id}</div>`; }
-function pct_c(p){ return p>=80?'var(--green)':p>=40?'var(--amber)':'var(--blue)'; }
-function prog(p){ const c=pct_c(p); return `<div class="pw"><div class="pb2"><div class="pf" style="width:${p}%;background:${c}"></div></div><span class="pp">${p}%</span></div>`; }
-function badge(txt,cls){ return `<span class="badge ${cls||'bg-gr'}">${txt}</span>`; }
-function stageBadge(s){ return badge(s||'—',STAGE_C[s]||'bg-gr'); }
-
-// ── CSV PARSER ──
+// ── GENERIC CSV PARSER ──
 function parseCSV(text) {
   const lines = text.trim().split('\n');
-  const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g,''));
-  return lines.slice(1).map(line => {
-    const vals = [];
-    let cur = '', inQ = false;
-    for (let i = 0; i < line.length; i++) {
-      if (line[i] === '"') { inQ = !inQ; }
-      else if (line[i] === ',' && !inQ) { vals.push(cur.trim()); cur = ''; }
-      else { cur += line[i]; }
-    }
+  const headers = lines[0].split(',').map(h=>h.trim().replace(/^"|"$/g,''));
+  return lines.slice(1).map(line=>{
+    const vals=[];let cur='',inQ=false;
+    for(let i=0;i<line.length;i++){if(line[i]==='"'){inQ=!inQ;}else if(line[i]===','&&!inQ){vals.push(cur.trim());cur='';}else{cur+=line[i];}}
     vals.push(cur.trim());
-    const obj = {};
-    headers.forEach((h, i) => obj[h] = (vals[i] || '').replace(/^"|"$/g,'').trim());
+    const obj={};headers.forEach((h,i)=>obj[h]=(vals[i]||'').replace(/^"|"$/g,'').trim());
     return obj;
-  }).filter(r => Object.values(r).some(v => v.length > 0));
+  }).filter(r=>Object.values(r).some(v=>v.length>0));
 }
 
 // ── SPRINT CSV PARSER ──
-// Groups rows by "Fecha Sprint", sorts sprints newest-first, extracts unique members.
-// Expected CSV columns: Name, Propietario, Proyecto, Estado, Fecha Sprint, SP Real, Actividad
-// (plus optional Horas — gracefully handled if absent)
+// The sheet exports with this structure:
+//   "Sprint Board"                        ← title row (skip)
+//   "Sprint 11 Mayo - 22 Mayo"            ← sprint name row (new block)
+//   "Name,Propietario,Proyecto,..."       ← headers
+//   task rows...
+//   "Sprint 27 de Abril - 8 de Mayo"      ← next sprint block
+//   headers, tasks...
 function parseSprintCSV(text) {
-  const rows = parseCSV(text);
-  
-  // Filter out rows without a task name (totals rows, blank separators, headers repeated, etc.)
-  const taskRows = rows.filter(r => r['Name'] && r['Name'].length > 0 && r['Fecha Sprint'] && r['Fecha Sprint'].length > 0);
-
-  // Group by sprint date range
-  const sprintMap = {};
-  taskRows.forEach(row => {
-    const sprintKey = (row['Fecha Sprint'] || '').trim();
-    if (!sprintMap[sprintKey]) sprintMap[sprintKey] = [];
-    sprintMap[sprintKey].push({
-      Name:       row['Name']       || '',
-      Propietario:row['Propietario']|| '',
-      Proyecto:   row['Proyecto']   || '',
-      Estado:     row['Estado']     || '',
-      Horas:      row['Horas']      || '',
-      'Fecha Sprint': sprintKey,
-      'SP Real':  row['SP Real']    || '',
-      Actividad:  row['Actividad']  || '',
-    });
-  });
-
-  // Build sprint name from "YYYY-MM-DD - YYYY-MM-DD" → "Sprint DD Mes - DD Mes"
-  const MONTHS = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-  function formatSprintName(key) {
-    const parts = key.split(' - ');
-    if (parts.length !== 2) return 'Sprint ' + key;
-    function fmt(dateStr) {
-      const d = new Date(dateStr + 'T12:00:00');
-      if (isNaN(d)) return dateStr;
-      return d.getDate() + ' ' + MONTHS[d.getMonth()];
-    }
-    return 'Sprint ' + fmt(parts[0]) + ' - ' + fmt(parts[1]);
+  function splitLine(line) {
+    const vals=[];let cur='',inQ=false;
+    for(let i=0;i<line.length;i++){if(line[i]==='"'){inQ=!inQ;}else if(line[i]===','&&!inQ){vals.push(cur.trim().replace(/^"|"$/g,''));cur='';}else{cur+=line[i];}}
+    vals.push(cur.trim().replace(/^"|"$/g,''));
+    return vals;
   }
+  const lines = text.trim().split('\n').map(l=>l.trimEnd());
+  const sprints = [];
+  let currentSprint = null, headers = null;
 
-  // Sort sprints: newest first (by start date of the range)
-  const sortedKeys = Object.keys(sprintMap).sort((a, b) => {
-    const aDate = a.split(' - ')[0] || '';
-    const bDate = b.split(' - ')[0] || '';
-    return bDate.localeCompare(aDate);
+  for(let i=0;i<lines.length;i++){
+    const cells = splitLine(lines[i]);
+    const first = (cells[0]||'').trim();
+
+    // Skip blanks and workbook title
+    if(!first || first==='Sprint Board') continue;
+
+    // Sprint name row: starts with "Sprint " + digit or uppercase
+    // Covers: "Sprint 11 Mayo - 22 Mayo", "Sprint 27 de Abril - 8 de Mayo"
+    if(/^Sprint\s+[\dA-Z]/i.test(first) && cells.filter(c=>c).length<=2) {
+      if(currentSprint && currentSprint.tasks.length>0) sprints.push(currentSprint);
+      currentSprint = { name: first, tasks: [] };
+      headers = null;
+      continue;
+    }
+
+    // Header row
+    if(first==='Name'||first==='Nombre'){headers=cells.map(h=>h.trim());continue;}
+
+    // Task row
+    if(!currentSprint||!headers) continue;
+    const task={};
+    headers.forEach((h,idx)=>{task[h]=(cells[idx]||'').trim();});
+    if(!task['Name']||!task['Fecha Sprint']) continue;
+
+    currentSprint.tasks.push({
+      Name:           task['Name']         ||'',
+      Propietario:    task['Propietario']   ||'',
+      Proyecto:       task['Proyecto']      ||'',
+      Estado:         task['Estado']        ||'',
+      Horas:          task['Horas']         ||'',
+      'Fecha Sprint': task['Fecha Sprint']  ||'',
+      'SP Real':      task['SP Real']       ||'',
+      Actividad:      task['Actividad']     ||'',
+    });
+  }
+  if(currentSprint&&currentSprint.tasks.length>0) sprints.push(currentSprint);
+
+  // Sort newest-first by Fecha Sprint start date
+  sprints.sort((a,b)=>{
+    const aD=(a.tasks[0]?.['Fecha Sprint']||'').split(' - ')[0];
+    const bD=(b.tasks[0]?.['Fecha Sprint']||'').split(' - ')[0];
+    return bD.localeCompare(aD);
   });
 
-  const sprints = sortedKeys.map(key => ({
-    name: formatSprintName(key),
-    _key: key,
-    tasks: sprintMap[key],
-  }));
-
-  // Unique members sorted alphabetically
-  const memberSet = new Set();
-  taskRows.forEach(r => { if (r['Propietario'] && r['Propietario'].trim()) memberSet.add(r['Propietario'].trim()); });
-  const members = [...memberSet].sort();
-
-  return { sprints, members };
+  const memberSet=new Set();
+  sprints.forEach(s=>s.tasks.forEach(t=>{if(t.Propietario&&t.Propietario.trim())memberSet.add(t.Propietario.trim());}));
+  return {sprints, members:[...memberSet].sort()};
 }
 
 // ── BUILD PROJECTS ──
-let PROJECTS = [];
-
 function buildProjects(csvRows) {
-  const allTasks = SPRINT_DATA.sprints.flatMap(s => s.tasks.map(t => ({...t, _sprint: s.name})));
-  return csvRows.map(row => {
-    const name = row['Proyecto'];
-    const projectTasks = allTasks.filter(t => (t.Proyecto||'').trim() === name);
-    const done  = projectTasks.filter(t => t.Estado === 'Listo').length;
-    const total = projectTasks.length;
-    const pct   = total > 0 ? Math.round(done / total * 100) : 0;
-    const memberSet = {};
-    projectTasks.forEach(t => { if (t.Propietario) memberSet[t.Propietario] = true; });
-    const members = Object.keys(memberSet).map(n => ({name: n}));
-    const tasksBySprint = SPRINT_DATA.sprints.map(s => ({
-      sprint: s.name,
-      tasks:  s.tasks.filter(t => (t.Proyecto||'').trim() === name)
-    }));
-    const hitoFields = ['Hito: Ayuntamiento','Hito: MIMARENA','Hito: MITUR','Hito: MIVED'];
-    const hitos = hitoFields.map(f => ({
-      name:     f.replace('Hito: ',''),
-      done:     row[f] === 'Si',
-      progress: row[f] === 'En proceso'
-    }));
-    return { name, lead: row['Lead Architect']||'', stage: row['Etapa Actual']||'', cliente: row['Cliente']||'', notas: row['Notas']||'', pct, done, total, members, tasksBySprint, hitos };
+  const allTasks = SPRINT_DATA.sprints.flatMap(s=>s.tasks.map(t=>({...t,_sprint:s.name})));
+  return csvRows.map(row=>{
+    const name=row['Proyecto'];
+    const pt=allTasks.filter(t=>(t.Proyecto||'').trim()===name);
+    const done=pt.filter(t=>t.Estado==='Listo').length;
+    const total=pt.length;
+    const pct=total>0?Math.round(done/total*100):0;
+    const ms={};pt.forEach(t=>{if(t.Propietario)ms[t.Propietario]=true;});
+    const members=Object.keys(ms).map(n=>({name:n}));
+    const tasksBySprint=SPRINT_DATA.sprints.map(s=>({sprint:s.name,tasks:s.tasks.filter(t=>(t.Proyecto||'').trim()===name)}));
+    const hitos=['Hito: Ayuntamiento','Hito: MIMARENA','Hito: MITUR','Hito: MIVED'].map(f=>({name:f.replace('Hito: ',''),done:row[f]==='Si',progress:row[f]==='En proceso'}));
+    return {name,lead:row['Lead Architect']||'',stage:row['Etapa Actual']||'',cliente:row['Cliente']||'',notas:row['Notas']||'',pct,done,total,members,tasksBySprint,hitos};
   });
 }
 
 // ── SYNC ──
 async function syncSheets() {
-  const dot     = document.getElementById('sync-dot');
-  const label   = document.getElementById('sync-label');
-  const overlay = document.getElementById('loading-overlay');
-  const errBox  = document.getElementById('error-box');
-  const loadTxt = document.getElementById('loading-text');
-
-  dot.className   = 'sync-dot loading';
-  label.textContent = 'Sincronizando...';
-  overlay.classList.remove('hidden');
-  errBox.style.display  = 'none';
-  loadTxt.style.display = 'block';
-  loadTxt.textContent   = 'Cargando datos desde Google Sheets...';
-
+  const dot=document.getElementById('sync-dot'),label=document.getElementById('sync-label');
+  const overlay=document.getElementById('loading-overlay'),errBox=document.getElementById('error-box'),loadTxt=document.getElementById('loading-text');
+  dot.className='sync-dot loading';label.textContent='Sincronizando...';
+  overlay.classList.remove('hidden');errBox.style.display='none';loadTxt.style.display='block';
   try {
-    // Fetch both CSVs sequentially so error messages are clear
-    loadTxt.textContent = 'Cargando portafolio...';
-    const projText = await fetchCSV(PROJECTS_GID, 'portafolio');
+    loadTxt.textContent='Cargando portafolio...';
+    const projText=await fetchCSV(PROJECTS_GID,'portafolio');
+    loadTxt.textContent='Cargando sprint board...';
+    const sprintText=await fetchCSV(SPRINT_GID,'sprint board');
 
-    loadTxt.textContent = 'Cargando sprint board...';
-    const sprintText = await fetchCSV(SPRINT_GID, 'sprint board');
+    const parsed=parseSprintCSV(sprintText);
+    if(parsed.sprints.length===0) throw new Error('Sin sprints en el sheet — verifica que gid='+SPRINT_GID+' esté publicado y sea correcto.');
+    SPRINT_DATA=parsed; activeSprintIdx=0;
 
-    // Parse sprint data first (needed by buildProjects)
-    const parsedSprint = parseSprintCSV(sprintText);
-    if (parsedSprint.sprints.length === 0) throw new Error('Sin sprints en el sheet');
-    SPRINT_DATA = parsedSprint;
+    const projRows=parseCSV(projText).filter(r=>r['Proyecto']&&r['Proyecto'].length>0);
+    if(projRows.length===0) throw new Error('Sin proyectos en el sheet de portafolio.');
+    PROJECTS=buildProjects(projRows);
 
-    // Parse portfolio
-    const projRows = parseCSV(projText).filter(r => r['Proyecto'] && r['Proyecto'].length > 0);
-    if (projRows.length === 0) throw new Error('Sin proyectos en el sheet');
-    PROJECTS = buildProjects(projRows);
+    const cur=SPRINT_DATA.sprints[0].tasks;
+    document.getElementById('s-total').textContent=PROJECTS.length;
+    document.getElementById('s-sprint').textContent=cur.length;
+    document.getElementById('s-prog').textContent=cur.filter(t=>t.Estado==='En proceso').length;
+    document.getElementById('s-done').textContent=cur.filter(t=>t.Estado==='Listo').length;
+    document.getElementById('s-mem').textContent=SPRINT_DATA.members.length;
 
-    // ── Portfolio stats ──
-    const cur = SPRINT_DATA.sprints[0].tasks;
-    document.getElementById('s-total').textContent  = PROJECTS.length;
-    document.getElementById('s-sprint').textContent = cur.length;
-    document.getElementById('s-prog').textContent   = cur.filter(t => t.Estado === 'En proceso').length;
-    document.getElementById('s-done').textContent   = cur.filter(t => t.Estado === 'Listo').length;
-    document.getElementById('s-mem').textContent    = SPRINT_DATA.members.length;
+    const pmf=document.getElementById('pmem-f');
+    pmf.innerHTML='<option value="">Todo el equipo</option>';
+    SPRINT_DATA.members.forEach(m=>{pmf.innerHTML+=`<option value="${m}">${m.split(' ')[0]}</option>`;});
 
-    // Populate portfolio member filter
-    const pmf = document.getElementById('pmem-f');
-    pmf.innerHTML = '<option value="">Todo el equipo</option>';
-    SPRINT_DATA.members.forEach(m => {
-      pmf.innerHTML += `<option value="${m}">${m.split(' ')[0]}</option>`;
-    });
-
-    dot.className       = 'sync-dot';
-    label.textContent   = 'Sincronizar';
-    const now = new Date();
-    document.getElementById('last-sync').textContent =
-      `Última sync: ${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}`;
-
+    dot.className='sync-dot';label.textContent='Sincronizar';
+    const now=new Date();
+    document.getElementById('last-sync').textContent=`Última sync: ${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}`;
     overlay.classList.add('hidden');
-    applyPFilters();
-    renderSprint();
-    renderGates();
-
+    applyPFilters();renderSprint();renderGates();
   } catch(e) {
-    dot.className       = 'sync-dot error';
-    label.textContent   = 'Error';
-    loadTxt.style.display = 'none';
-    errBox.style.display  = 'block';
-    errBox.querySelector('p').textContent = e.message || 'Error desconocido. Ver consola para detalles.';
-    console.error('Sync error:', e);
+    dot.className='sync-dot error';label.textContent='Error';
+    loadTxt.style.display='none';errBox.style.display='block';
+    document.getElementById('error-msg').textContent=e.message||'Error desconocido.';
+    console.error('Sync error:',e);
   }
 }
 
 // ── PORTFOLIO ──
-let pf={text:'',mem:'',stage:''}, pSort={col:'name',dir:1};
-
-function renderP(list) {
-  document.getElementById('ptbody').innerHTML = list.map(p => {
-    const curN = SPRINT_DATA.sprints.length > 0
-      ? SPRINT_DATA.sprints[0].tasks.filter(t => (t.Proyecto||'').trim() === p.name).length
-      : 0;
-    const leadName = p.lead ? p.lead.split(' ').filter(Boolean) : [];
-    const leadShort = leadName.length >= 2 ? leadName[0]+' '+leadName[leadName.length-1] : p.lead;
+let pf={text:'',mem:'',stage:''},pSort={col:'name',dir:1};
+function renderP(list){
+  document.getElementById('ptbody').innerHTML=list.map(p=>{
+    const curN=SPRINT_DATA.sprints.length>0?SPRINT_DATA.sprints[0].tasks.filter(t=>(t.Proyecto||'').trim()===p.name).length:0;
+    const ln=p.lead?p.lead.split(' ').filter(Boolean):[];
+    const ls=ln.length>=2?ln[0]+' '+ln[ln.length-1]:p.lead;
     return `<tr onclick="openProject('${p.name.replace(/\\/g,'\\\\').replace(/'/g,"\\'")}')">
       <td><strong>${p.name}</strong>${p.cliente?`<div style="font-size:11px;color:var(--text3)">${p.cliente}</div>`:''}</td>
       <td>${stageBadge(p.stage)}</td>
-      <td><div style="display:flex;align-items:center;gap:6px">${p.lead?av(p.lead,20):''}<span style="font-size:12px;color:var(--text2)">${leadShort||'—'}</span></div></td>
+      <td><div style="display:flex;align-items:center;gap:6px">${p.lead?av(p.lead,20):''}<span style="font-size:12px;color:var(--text2)">${ls||'—'}</span></div></td>
       <td>${prog(p.pct)}</td>
       <td><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text2)">${p.done}/${p.total}</span></td>
       <td>${badge(curN>0?curN+' tareas':'—',curN>0?'bg-a':'bg-gr')}</td>
     </tr>`;
   }).join('');
 }
-
-function applyPFilters() {
-  let f = PROJECTS.filter(p => {
-    const nt = !pf.text  || p.name.toLowerCase().includes(pf.text) || (p.cliente||'').toLowerCase().includes(pf.text);
-    const nm = !pf.mem   || p.members.some(m => m.name === pf.mem);
-    const ns = !pf.stage || p.stage === pf.stage;
-    return nt && nm && ns;
+function applyPFilters(){
+  let f=PROJECTS.filter(p=>{
+    const nt=!pf.text||p.name.toLowerCase().includes(pf.text)||(p.cliente||'').toLowerCase().includes(pf.text);
+    const nm=!pf.mem||p.members.some(m=>m.name===pf.mem);
+    const ns=!pf.stage||p.stage===pf.stage;
+    return nt&&nm&&ns;
   });
-  f.sort((a, b) => {
-    if (pSort.col === 'pct')   return (a.pct - b.pct) * pSort.dir;
-    if (pSort.col === 'total') return (a.total - b.total) * pSort.dir;
-    if (pSort.col === 'sprint') {
-      const ac = SPRINT_DATA.sprints.length > 0 ? SPRINT_DATA.sprints[0].tasks.filter(t=>(t.Proyecto||'').trim()===a.name).length : 0;
-      const bc = SPRINT_DATA.sprints.length > 0 ? SPRINT_DATA.sprints[0].tasks.filter(t=>(t.Proyecto||'').trim()===b.name).length : 0;
-      return (ac - bc) * pSort.dir;
+  f.sort((a,b)=>{
+    if(pSort.col==='pct')return(a.pct-b.pct)*pSort.dir;
+    if(pSort.col==='total')return(a.total-b.total)*pSort.dir;
+    if(pSort.col==='sprint'){
+      const ac=SPRINT_DATA.sprints.length>0?SPRINT_DATA.sprints[0].tasks.filter(t=>(t.Proyecto||'').trim()===a.name).length:0;
+      const bc=SPRINT_DATA.sprints.length>0?SPRINT_DATA.sprints[0].tasks.filter(t=>(t.Proyecto||'').trim()===b.name).length:0;
+      return(ac-bc)*pSort.dir;
     }
-    return String(a[pSort.col]||'').localeCompare(String(b[pSort.col]||'')) * pSort.dir;
+    return String(a[pSort.col]||'').localeCompare(String(b[pSort.col]||''))*pSort.dir;
   });
   renderP(f);
-  const cols = ['name','stage','lead','pct','total','sprint'];
-  document.querySelectorAll('.dt thead th').forEach((th, i) => {
+  ['name','stage','lead','pct','total','sprint'].forEach((c,i)=>{
+    const th=document.querySelectorAll('.dt thead th')[i];
     th.classList.remove('sort-asc','sort-desc');
-    if (cols[i] === pSort.col) th.classList.add(pSort.dir === 1 ? 'sort-asc' : 'sort-desc');
+    if(c===pSort.col)th.classList.add(pSort.dir===1?'sort-asc':'sort-desc');
   });
 }
-function filterP(v)     { pf.text=v.toLowerCase(); applyPFilters(); }
-function filterPMem(v)  { pf.mem=v;  applyPFilters(); }
-function filterPStage(v){ pf.stage=v; applyPFilters(); }
-function sortP(col)     { pSort.dir=pSort.col===col?-pSort.dir:1; pSort.col=col; applyPFilters(); }
+function filterP(v){pf.text=v.toLowerCase();applyPFilters();}
+function filterPMem(v){pf.mem=v;applyPFilters();}
+function filterPStage(v){pf.stage=v;applyPFilters();}
+function sortP(col){pSort.dir=pSort.col===col?-pSort.dir:1;pSort.col=col;applyPFilters();}
 
-// ── SPRINT ──
-let sf={text:'',mem:'',proj:'',act:''}, sSort={col:'Proyecto',dir:1};
-
-function renderSprint() {
-  if (!SPRINT_DATA.sprints.length) return;
-  const sprint = SPRINT_DATA.sprints[0];
-  document.getElementById('sprint-name-label').textContent = sprint.name;
-
-  const tasks = sprint.tasks;
-  document.getElementById('ss-sprint').textContent = tasks.filter(t => t.Estado === 'En sprint').length;
-  document.getElementById('ss-proc').textContent   = tasks.filter(t => t.Estado === 'En proceso').length;
-  document.getElementById('ss-done').textContent   = tasks.filter(t => t.Estado === 'Listo').length;
-  document.getElementById('ss-sp').textContent     = tasks.reduce((a, t) => a + (parseInt(t['SP Real']) || 0), 0);
-
-  // Populate sprint filters
-  const smf = document.getElementById('smem-f');
-  smf.innerHTML = '<option value="">Todo el equipo</option>';
-  SPRINT_DATA.members.forEach(m => {
-    smf.innerHTML += `<option value="${m}">${m.split(' ')[0]}</option>`;
-  });
-
-  const spf = document.getElementById('sproj-f');
-  spf.innerHTML = '<option value="">Todos los proyectos</option>';
-  [...new Set(tasks.map(t => (t.Proyecto||'').trim()))].sort().filter(Boolean)
-    .forEach(p => { spf.innerHTML += `<option value="${p}">${p}</option>`; });
-
-  const saf = document.getElementById('sact-f');
-  saf.innerHTML = '<option value="">Todas las actividades</option>';
-  [...new Set(tasks.map(t => t.Actividad).filter(Boolean))].sort()
-    .forEach(a => { saf.innerHTML += `<option value="${a}">${a}</option>`; });
-
+// ── SPRINT VIEW ──
+let sf={text:'',mem:'',proj:'',act:''},sSort={col:'Proyecto',dir:1};
+function renderSprint(){
+  if(!SPRINT_DATA.sprints.length)return;
+  const sel=document.getElementById('sprint-sel');
+  sel.innerHTML=SPRINT_DATA.sprints.map((s,i)=>`<option value="${i}"${i===activeSprintIdx?' selected':''}>${s.name}</option>`).join('');
+  const sprint=SPRINT_DATA.sprints[activeSprintIdx];
+  document.getElementById('sprint-name-label').textContent=sprint.name;
+  const tasks=sprint.tasks;
+  document.getElementById('ss-sprint').textContent=tasks.filter(t=>t.Estado==='En sprint').length;
+  document.getElementById('ss-proc').textContent=tasks.filter(t=>t.Estado==='En proceso').length;
+  document.getElementById('ss-done').textContent=tasks.filter(t=>t.Estado==='Listo').length;
+  document.getElementById('ss-sp').textContent=tasks.reduce((a,t)=>a+(parseInt(t['SP Real'])||0),0);
+  const smf=document.getElementById('smem-f');
+  smf.innerHTML='<option value="">Todo el equipo</option>';
+  SPRINT_DATA.members.forEach(m=>{smf.innerHTML+=`<option value="${m}">${m.split(' ')[0]}</option>`;});
+  const spf=document.getElementById('sproj-f');
+  spf.innerHTML='<option value="">Todos los proyectos</option>';
+  [...new Set(tasks.map(t=>(t.Proyecto||'').trim()))].sort().filter(Boolean).forEach(p=>{spf.innerHTML+=`<option value="${p}">${p}</option>`;});
+  const saf=document.getElementById('sact-f');
+  saf.innerHTML='<option value="">Todas las actividades</option>';
+  [...new Set(tasks.map(t=>t.Actividad).filter(Boolean))].sort().forEach(a=>{saf.innerHTML+=`<option value="${a}">${a}</option>`;});
+  sf={text:'',mem:'',proj:'',act:''};
   applySFilters();
 }
-
-function applySFilters() {
-  if (!SPRINT_DATA.sprints.length) return;
-  const tasks = SPRINT_DATA.sprints[0].tasks;
-  let f = tasks.filter(t => {
-    const nt = !sf.text || t.Name.toLowerCase().includes(sf.text) || (t.Proyecto||'').toLowerCase().includes(sf.text);
-    const nm = !sf.mem  || t.Propietario === sf.mem;
-    const np = !sf.proj || (t.Proyecto||'').trim() === sf.proj;
-    const na = !sf.act  || t.Actividad === sf.act;
-    return nt && nm && np && na;
+function switchSprint(idx){activeSprintIdx=parseInt(idx);renderSprint();}
+function applySFilters(){
+  if(!SPRINT_DATA.sprints.length)return;
+  const tasks=SPRINT_DATA.sprints[activeSprintIdx].tasks;
+  let f=tasks.filter(t=>{
+    const nt=!sf.text||t.Name.toLowerCase().includes(sf.text)||(t.Proyecto||'').toLowerCase().includes(sf.text);
+    const nm=!sf.mem||t.Propietario===sf.mem;
+    const np=!sf.proj||(t.Proyecto||'').trim()===sf.proj;
+    const na=!sf.act||t.Actividad===sf.act;
+    return nt&&nm&&np&&na;
   });
-  f.sort((a, b) => {
-    if (sSort.col === 'SP Real') return ((parseInt(a[sSort.col])||0) - (parseInt(b[sSort.col])||0)) * sSort.dir;
-    return String(a[sSort.col]||'').localeCompare(String(b[sSort.col]||'')) * sSort.dir;
+  f.sort((a,b)=>{
+    if(sSort.col==='SP Real')return((parseInt(a[sSort.col])||0)-(parseInt(b[sSort.col])||0))*sSort.dir;
+    return String(a[sSort.col]||'').localeCompare(String(b[sSort.col]||''))*sSort.dir;
   });
-  const stC = {'En sprint':'bg-gr','En proceso':'bg-a','Listo':'bg-g','Backlog':'bg-p'};
-  document.getElementById('stbody').innerHTML = f.map(t => {
-    const ac = ACT_C[t.Actividad] || 'var(--text3)';
+  const stC={'En sprint':'bg-gr','En proceso':'bg-a','Listo':'bg-g','Backlog':'bg-p'};
+  document.getElementById('stbody').innerHTML=f.map(t=>{
+    const ac=ACT_C[t.Actividad]||'var(--text3)';
     return `<tr>
       <td style="max-width:260px">${t.Name}</td>
       <td style="color:var(--text2)">${t.Proyecto||'—'}</td>
       <td><div style="display:flex;align-items:center;gap:6px">${t.Propietario?av(t.Propietario,18):''}<span style="font-size:11px;color:var(--text2)">${t.Propietario?t.Propietario.split(' ')[0]:'-'}</span></div></td>
-      <td>${badge(t.Estado||'—', stC[t.Estado]||'bg-gr')}</td>
+      <td>${badge(t.Estado||'—',stC[t.Estado]||'bg-gr')}</td>
       <td>${t.Actividad?`<span class="act-pill" style="background:${ac}22;color:${ac}">${t.Actividad}</span>`:'—'}</td>
       <td><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3)">${t['SP Real']||'—'}</span></td>
       <td><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3)">${t.Horas||'—'}</span></td>
     </tr>`;
   }).join('');
-  const scols = ['Name','Proyecto','Propietario','Estado','Actividad','SP Real','Horas'];
-  document.querySelectorAll('.sprint-tbl thead th').forEach((th, i) => {
+  const scols=['Name','Proyecto','Propietario','Estado','Actividad','SP Real','Horas'];
+  document.querySelectorAll('.sprint-tbl thead th').forEach((th,i)=>{
     th.classList.remove('sort-asc','sort-desc');
-    if (scols[i] === sSort.col) th.classList.add(sSort.dir === 1 ? 'sort-asc' : 'sort-desc');
+    if(scols[i]===sSort.col)th.classList.add(sSort.dir===1?'sort-asc':'sort-desc');
   });
 }
-function filterSprint(v){ sf.text=v.toLowerCase(); applySFilters(); }
-function filterSMem(v)  { sf.mem=v;   applySFilters(); }
-function filterSProj(v) { sf.proj=v;  applySFilters(); }
-function filterSAct(v)  { sf.act=v;   applySFilters(); }
-function sortS(col)     { sSort.dir=sSort.col===col?-sSort.dir:1; sSort.col=col; applySFilters(); }
+function filterSprint(v){sf.text=v.toLowerCase();applySFilters();}
+function filterSMem(v){sf.mem=v;applySFilters();}
+function filterSProj(v){sf.proj=v;applySFilters();}
+function filterSAct(v){sf.act=v;applySFilters();}
+function sortS(col){sSort.dir=sSort.col===col?-sSort.dir:1;sSort.col=col;applySFilters();}
 
 // ── GATES ──
-let gf={text:'',status:'',lead:''}, gSort={col:'estado',dir:1};
-
-function gateStatusClass(estado) {
-  return {'En flujo':'gs-flujo','Gate abierto':'gs-abierto','Gate vencido':'gs-vencido','Bypass':'gs-bypass','Cerrado':'gs-cerrado'}[estado] || 'bg-gr';
-}
-
-function countdownHTML(fechaLimite, estado) {
-  if (!fechaLimite || estado === 'Cerrado' || estado === 'En flujo') return '<span class="cd-none">—</span>';
-  const today = new Date(); today.setHours(0,0,0,0);
-  const lim   = new Date(fechaLimite); lim.setHours(0,0,0,0);
-  const diff  = Math.round((lim - today) / 86400000);
-  if (diff < 0)  return `<span class="countdown cd-late">${Math.abs(diff)}d vencido</span>`;
-  if (diff === 0) return `<span class="countdown cd-warn">Hoy</span>`;
-  if (diff <= 3)  return `<span class="countdown cd-warn">${diff}d</span>`;
+let gf={text:'',status:'',lead:''},gSort={col:'estado',dir:1};
+function gSC(e){return{'En flujo':'gs-flujo','Gate abierto':'gs-abierto','Gate vencido':'gs-vencido','Bypass':'gs-bypass','Cerrado':'gs-cerrado'}[e]||'bg-gr';}
+function cdHTML(fl,e){
+  if(!fl||e==='Cerrado'||e==='En flujo')return '<span class="cd-none">—</span>';
+  const today=new Date();today.setHours(0,0,0,0);const lim=new Date(fl);lim.setHours(0,0,0,0);
+  const diff=Math.round((lim-today)/86400000);
+  if(diff<0)return `<span class="countdown cd-late">${Math.abs(diff)}d vencido</span>`;
+  if(diff===0)return `<span class="countdown cd-warn">Hoy</span>`;
+  if(diff<=3)return `<span class="countdown cd-warn">${diff}d</span>`;
   return `<span class="countdown cd-ok">${diff}d</span>`;
 }
+function condBar(c,t){if(!t)return'—';const p=Math.round(c/t*100);return `<div class="cond-bar"><div class="cond-track"><div class="cond-fill" style="width:${p}%"></div></div><span class="cond-txt">${c}/${t}</span></div>`;}
+function gateTrans(g){const d=GATE_DEFS[g];if(!d)return g;return `<div><span style="color:var(--text2);font-size:11px;font-weight:600">${g}</span></div><div style="font-size:10px;color:var(--text3);margin-top:2px">${d.from} → ${d.to}</div>`;}
 
-function condBar(cumplidas, total) {
-  if (!total) return '—';
-  const pct = Math.round(cumplidas / total * 100);
-  return `<div class="cond-bar"><div class="cond-track"><div class="cond-fill" style="width:${pct}%"></div></div><span class="cond-txt">${cumplidas}/${total}</span></div>`;
-}
-
-function gateTrans(gate) {
-  const def = GATE_DEFS[gate];
-  if (!def) return gate;
-  return `<div class="gate-trans"><span style="color:var(--text2);font-size:11px;font-weight:600">${gate}</span></div>
-          <div style="font-size:10px;color:var(--text3);margin-top:2px">${def.from} <span class="arr">→</span> ${def.to}</div>`;
-}
-
-function renderGates() {
-  const today = new Date(); today.setHours(0,0,0,0);
-  const total    = GATE_EXAMPLE.length;
-  const abiertos = GATE_EXAMPLE.filter(g => g.estado === 'Gate abierto').length;
-  const bypasses = GATE_EXAMPLE.filter(g => g.estado === 'Bypass').length;
-  const vencidos = GATE_EXAMPLE.filter(g => {
-    if (g.estado === 'Gate vencido') return true;
-    if (g.fechaLimite && g.estado !== 'Cerrado' && g.estado !== 'En flujo') {
-      const lim = new Date(g.fechaLimite); lim.setHours(0,0,0,0);
-      return lim < today;
-    }
+function renderGates(){
+  const today=new Date();today.setHours(0,0,0,0);
+  document.getElementById('gs-total').textContent=GATE_EXAMPLE.length;
+  document.getElementById('gs-abiertos').textContent=GATE_EXAMPLE.filter(g=>g.estado==='Gate abierto').length;
+  document.getElementById('gs-bypass').textContent=GATE_EXAMPLE.filter(g=>g.estado==='Bypass').length;
+  document.getElementById('gs-vencidos').textContent=GATE_EXAMPLE.filter(g=>{
+    if(g.estado==='Gate vencido')return true;
+    if(g.fechaLimite&&g.estado!=='Cerrado'&&g.estado!=='En flujo'){const l=new Date(g.fechaLimite);l.setHours(0,0,0,0);return l<today;}
     return false;
   }).length;
-  const cerrados = GATE_EXAMPLE.filter(g => g.estado === 'Cerrado').length;
-
-  document.getElementById('gs-total').textContent    = total;
-  document.getElementById('gs-abiertos').textContent = abiertos;
-  document.getElementById('gs-bypass').textContent   = bypasses;
-  document.getElementById('gs-vencidos').textContent = vencidos;
-  document.getElementById('gs-cerrados').textContent = cerrados;
-
-  const glf = document.getElementById('glead-f');
-  const leads = [...new Set(PROJECTS.map(p => p.lead).filter(Boolean))].sort();
-  glf.innerHTML = '<option value="">Todos los leads</option>';
-  leads.forEach(l => { glf.innerHTML += `<option value="${l}">${l.split(' ')[0]}</option>`; });
-
+  document.getElementById('gs-cerrados').textContent=GATE_EXAMPLE.filter(g=>g.estado==='Cerrado').length;
+  const glf=document.getElementById('glead-f');
+  glf.innerHTML='<option value="">Todos los leads</option>';
+  [...new Set(PROJECTS.map(p=>p.lead).filter(Boolean))].sort().forEach(l=>{glf.innerHTML+=`<option value="${l}">${l.split(' ')[0]}</option>`;});
   applyGFilters();
 }
-
-function applyGFilters() {
-  let data = GATE_EXAMPLE.map(g => {
-    const proj = PROJECTS.find(p => p.name === g.proyecto);
-    return {...g, lead: proj ? proj.lead : ''};
+function applyGFilters(){
+  const today=new Date();today.setHours(0,0,0,0);
+  let data=GATE_EXAMPLE.map(g=>{
+    const proj=PROJECTS.find(p=>p.name===g.proyecto);
+    let estado=g.estado;
+    if(estado!=='Cerrado'&&estado!=='En flujo'&&estado!=='Bypass'&&g.fechaLimite){const l=new Date(g.fechaLimite);l.setHours(0,0,0,0);if(l<today)estado='Gate vencido';}
+    return{...g,estado,lead:proj?proj.lead:''};
+  }).filter(g=>{
+    const nt=!gf.text||g.proyecto.toLowerCase().includes(gf.text);
+    const ns=!gf.status||g.estado===gf.status;
+    const nl=!gf.lead||g.lead===gf.lead;
+    return nt&&ns&&nl;
   });
-
-  data = data.filter(g => {
-    const nt = !gf.text   || g.proyecto.toLowerCase().includes(gf.text);
-    const ns = !gf.status || g.estado === gf.status;
-    const nl = !gf.lead   || g.lead   === gf.lead;
-    return nt && ns && nl;
-  });
-
-  const sortKey = gSort.col;
-  data.sort((a, b) => String(a[sortKey]||'').localeCompare(String(b[sortKey]||'')) * gSort.dir);
-
-  const today = new Date(); today.setHours(0,0,0,0);
-  data = data.map(g => {
-    if (g.estado !== 'Cerrado' && g.estado !== 'En flujo' && g.fechaLimite) {
-      const lim = new Date(g.fechaLimite); lim.setHours(0,0,0,0);
-      if (lim < today && g.estado !== 'Bypass') return {...g, estado:'Gate vencido'};
-    }
-    return g;
-  });
-
-  document.getElementById('gtbody').innerHTML = data.map(g => {
-    const proj = PROJECTS.find(p => p.name === g.proyecto);
-    const leadShort = proj && proj.lead ? proj.lead.split(' ').filter(Boolean).map((w,i,a)=>i===0||i===a.length-1?w:'').filter(Boolean).join(' ') : '—';
-    const fechaFmt = g.fechaLimite ? new Date(g.fechaLimite+'T12:00:00').toLocaleDateString('es-DO',{day:'2-digit',month:'short'}) : '—';
+  data.sort((a,b)=>String(a[gSort.col]||'').localeCompare(String(b[gSort.col]||''))*gSort.dir);
+  document.getElementById('gtbody').innerHTML=data.map(g=>{
+    const proj=PROJECTS.find(p=>p.name===g.proyecto);
+    const ls=proj&&proj.lead?proj.lead.split(' ').filter(Boolean).filter((w,i,a)=>i===0||i===a.length-1).join(' '):'—';
+    const ff=g.fechaLimite?new Date(g.fechaLimite+'T12:00:00').toLocaleDateString('es-DO',{day:'2-digit',month:'short'}):'—';
     return `<tr>
-      <td>
-        <strong style="font-size:12px">${g.proyecto}</strong>
-        ${proj ? `<div style="display:flex;align-items:center;gap:5px;margin-top:3px">${av(proj.lead||'?',16)}<span style="font-size:10px;color:var(--text3)">${leadShort}</span></div>` : ''}
-      </td>
+      <td><strong style="font-size:12px">${g.proyecto}</strong>${proj?`<div style="display:flex;align-items:center;gap:5px;margin-top:3px">${av(proj.lead||'?',16)}<span style="font-size:10px;color:var(--text3)">${ls}</span></div>`:''}</td>
       <td>${gateTrans(g.gate)}</td>
-      <td>${badge(g.estado, gateStatusClass(g.estado))}</td>
+      <td>${badge(g.estado,gSC(g.estado))}</td>
       <td><span style="font-size:12px;color:var(--text2)">${g.aprobador||'—'}</span></td>
-      <td><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3)">${fechaFmt}</span></td>
-      <td>${countdownHTML(g.fechaLimite, g.estado)}</td>
-      <td>${condBar(g.condicionesCumplidas, g.totalCondiciones)}</td>
+      <td><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3)">${ff}</span></td>
+      <td>${cdHTML(g.fechaLimite,g.estado)}</td>
+      <td>${condBar(g.condicionesCumplidas,g.totalCondiciones)}</td>
       <td><span style="font-size:11px;color:var(--text3);font-style:${g.notas?'normal':'italic'}">${g.notas||'—'}</span></td>
     </tr>`;
   }).join('');
-
-  const gcols = ['proyecto','gate','estado','aprobador','fechaLimite','','condiciones',''];
-  document.querySelectorAll('.gate-tbl thead th').forEach((th, i) => {
+  const gcols=['proyecto','gate','estado','aprobador','fechaLimite','','condiciones',''];
+  document.querySelectorAll('.gate-tbl thead th').forEach((th,i)=>{
     th.classList.remove('sort-asc','sort-desc');
-    if (gcols[i] && gcols[i] === gSort.col) th.classList.add(gSort.dir === 1 ? 'sort-asc' : 'sort-desc');
+    if(gcols[i]&&gcols[i]===gSort.col)th.classList.add(gSort.dir===1?'sort-asc':'sort-desc');
   });
 }
-function filterG(v)       { gf.text=v.toLowerCase(); applyGFilters(); }
-function filterGStatus(v) { gf.status=v; applyGFilters(); }
-function filterGLead(v)   { gf.lead=v;   applyGFilters(); }
-function sortG(col)       { gSort.dir=gSort.col===col?-gSort.dir:1; gSort.col=col; applyGFilters(); }
+function filterG(v){gf.text=v.toLowerCase();applyGFilters();}
+function filterGStatus(v){gf.status=v;applyGFilters();}
+function filterGLead(v){gf.lead=v;applyGFilters();}
+function sortG(col){gSort.dir=gSort.col===col?-gSort.dir:1;gSort.col=col;applyGFilters();}
 
 // ── DETAIL ──
-function openProject(name) {
-  const p = PROJECTS.find(x => x.name === name);
-  if (!p) return;
-  document.getElementById('d-name').textContent = p.name;
-  const curN = SPRINT_DATA.sprints.length > 0
-    ? SPRINT_DATA.sprints[0].tasks.filter(t => (t.Proyecto||'').trim() === p.name).length
-    : 0;
-  document.getElementById('d-meta').innerHTML = `
+function openProject(name){
+  const p=PROJECTS.find(x=>x.name===name);if(!p)return;
+  document.getElementById('d-name').textContent=p.name;
+  const curN=SPRINT_DATA.sprints.length>0?SPRINT_DATA.sprints[0].tasks.filter(t=>(t.Proyecto||'').trim()===p.name).length:0;
+  document.getElementById('d-meta').innerHTML=`
     <div class="dmi"><span class="dml">Etapa actual</span>${stageBadge(p.stage)}</div>
     <div class="dmi"><span class="dml">Lead Architect</span><div style="display:flex;align-items:center;gap:7px;margin-top:2px">${p.lead?av(p.lead,22):''}<span class="dmv">${p.lead||'—'}</span></div></div>
     <div class="dmi"><span class="dml">Progreso histórico</span>${prog(p.pct)}</div>
     <div class="dmi"><span class="dml">Tareas</span><span class="dmv">${p.done}/${p.total}</span></div>
-    <div class="dmi"><span class="dml">Sprint actual</span>${badge(curN>0?curN+' tareas':'Sin tareas',curN>0?'bg-a':'bg-gr')}</div>
-  `;
-
-  document.getElementById('d-sprints').innerHTML = p.tasksBySprint
-    .filter(s => s.tasks.length > 0)
-    .map((s, si) => {
-      const done = s.tasks.filter(t => t.Estado === 'Listo').length;
-      const pct  = Math.round(done / s.tasks.length * 100);
-      const stC  = {'En sprint':'bg-gr','En proceso':'bg-a','Listo':'bg-g','Backlog':'bg-p'};
-      return `<div class="si-row">
-        <div class="sr" onclick="toggleSprint(this)">
-          <div class="sic" style="background:${pct===100?'var(--greenl)':'var(--bg4)'};color:${pct===100?'var(--green)':'var(--text3)'}">${pct}%</div>
-          <div style="flex:1"><div class="sin">${s.sprint}</div><div class="sis">${s.tasks.length} tareas · ${done} completadas</div></div>
-          <span style="color:var(--text3);font-size:11px;transition:transform .2s">▼</span>
-        </div>
-        <div class="stl${si===0?' open':''}">
-          ${s.tasks.map(t=>`<div class="str">
-            <div class="stc ${t.Estado==='Listo'?'done':''}" onclick="toggleTask(this)"></div>
-            <span class="stn ${t.Estado==='Listo'?'done':''}">${t.Name}</span>
-            ${badge(t.Estado||'—',stC[t.Estado]||'bg-gr')}
-            ${t['SP Real']?`<span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3)">${t['SP Real']}SP</span>`:''}
-          </div>`).join('')}
-        </div>
-      </div>`;
-    }).join('') || '<div style="padding:16px;color:var(--text3);font-size:13px">Sin historial de sprints</div>';
-
-  document.getElementById('d-hitos').innerHTML = p.hitos.map(h => `
+    <div class="dmi"><span class="dml">Sprint actual</span>${badge(curN>0?curN+' tareas':'Sin tareas',curN>0?'bg-a':'bg-gr')}</div>`;
+  const stC={'En sprint':'bg-gr','En proceso':'bg-a','Listo':'bg-g','Backlog':'bg-p'};
+  document.getElementById('d-sprints').innerHTML=p.tasksBySprint.filter(s=>s.tasks.length>0).map((s,si)=>{
+    const done=s.tasks.filter(t=>t.Estado==='Listo').length;
+    const pct=Math.round(done/s.tasks.length*100);
+    return `<div class="si-row">
+      <div class="sr" onclick="toggleSprint(this)">
+        <div class="sic" style="background:${pct===100?'var(--greenl)':'var(--bg4)'};color:${pct===100?'var(--green)':'var(--text3)'}">${pct}%</div>
+        <div style="flex:1"><div class="sin">${s.sprint}</div><div class="sis">${s.tasks.length} tareas · ${done} completadas</div></div>
+        <span style="color:var(--text3);font-size:11px;transition:transform .2s">▼</span>
+      </div>
+      <div class="stl${si===0?' open':''}">
+        ${s.tasks.map(t=>`<div class="str">
+          <div class="stc ${t.Estado==='Listo'?'done':''}" onclick="toggleTask(this)"></div>
+          <span class="stn ${t.Estado==='Listo'?'done':''}">${t.Name}</span>
+          ${badge(t.Estado||'—',stC[t.Estado]||'bg-gr')}
+          ${t['SP Real']?`<span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3)">${t['SP Real']}SP</span>`:''}
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }).join('')||'<div style="padding:16px;color:var(--text3);font-size:13px">Sin historial de sprints</div>';
+  document.getElementById('d-hitos').innerHTML=p.hitos.map(h=>`
     <div class="hito-item">
       <div class="hito-check ${h.done?'done':h.progress?'progress':''}"></div>
       <span class="hito-name ${h.done?'done':''}">${h.name}</span>
-      ${badge(h.done?'Aprobado':h.progress?'En proceso':'Pendiente', h.done?'bg-g':h.progress?'bg-a':'bg-gr')}
+      ${badge(h.done?'Aprobado':h.progress?'En proceso':'Pendiente',h.done?'bg-g':h.progress?'bg-a':'bg-gr')}
     </div>`).join('');
-
-  document.getElementById('d-team').innerHTML = p.members.map(m => `
+  document.getElementById('d-team').innerHTML=p.members.map(m=>`
     <div style="display:flex;align-items:center;gap:7px;padding:6px 10px;background:var(--bg3);border:1px solid var(--border);border-radius:6px">
       ${av(m.name,24)}<span style="font-size:12px;font-weight:500">${m.name}</span>
-    </div>`).join('') || '<span style="font-size:12px;color:var(--text3)">Sin tareas en sprints registrados</span>';
-
-  const acts = {};
-  p.tasksBySprint.forEach(s => s.tasks.forEach(t => { if (t.Actividad) acts[t.Actividad] = (acts[t.Actividad]||0)+1; }));
-  document.getElementById('d-activities').innerHTML = Object.entries(acts)
-    .sort((a,b) => b[1]-a[1])
-    .map(([act, cnt]) => {
-      const c = ACT_C[act] || 'var(--text3)';
-      return `<span class="act-pill" style="background:${c}22;color:${c};padding:3px 9px;border-radius:4px;font-size:11px;font-weight:600">${act} <span style="opacity:.7">${cnt}</span></span>`;
-    }).join('');
-
+    </div>`).join('')||'<span style="font-size:12px;color:var(--text3)">Sin tareas en sprints registrados</span>';
+  const acts={};
+  p.tasksBySprint.forEach(s=>s.tasks.forEach(t=>{if(t.Actividad)acts[t.Actividad]=(acts[t.Actividad]||0)+1;}));
+  document.getElementById('d-activities').innerHTML=Object.entries(acts).sort((a,b)=>b[1]-a[1]).map(([act,cnt])=>{
+    const c=ACT_C[act]||'var(--text3)';
+    return `<span class="act-pill" style="background:${c}22;color:${c};padding:3px 9px;border-radius:4px;font-size:11px;font-weight:600">${act} <span style="opacity:.7">${cnt}</span></span>`;
+  }).join('');
   showView('detail');
 }
-
-function toggleSprint(el) {
-  const l = el.nextElementSibling, ch = el.querySelector('span:last-child');
-  l.classList.toggle('open');
-  ch.style.transform = l.classList.contains('open') ? 'rotate(180deg)' : '';
-}
-function toggleTask(el) { el.classList.toggle('done'); el.nextElementSibling.classList.toggle('done'); }
+function toggleSprint(el){const l=el.nextElementSibling,ch=el.querySelector('span:last-child');l.classList.toggle('open');ch.style.transform=l.classList.contains('open')?'rotate(180deg)':'';}
+function toggleTask(el){el.classList.toggle('done');el.nextElementSibling.classList.toggle('done');}
 
 // ── NAV ──
-function showView(v) {
-  document.querySelectorAll('.view').forEach(x => x.classList.remove('active'));
+function showView(v){
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
   document.getElementById('view-'+v).classList.add('active');
-  document.getElementById('nav-portfolio').classList.remove('active');
-  document.getElementById('nav-sprint').classList.remove('active');
-  document.getElementById('nav-gates').classList.remove('active');
-  document.getElementById('back-btn').style.display = v === 'detail' ? 'inline-flex' : 'none';
-  if (v === 'portfolio') document.getElementById('nav-portfolio').classList.add('active');
-  if (v === 'sprint')    document.getElementById('nav-sprint').classList.add('active');
-  if (v === 'gates')     document.getElementById('nav-gates').classList.add('active');
+  ['portfolio','sprint','gates'].forEach(n=>document.getElementById('nav-'+n).classList.remove('active'));
+  document.getElementById('back-btn').style.display=v==='detail'?'inline-flex':'none';
+  if(['portfolio','sprint','gates'].includes(v))document.getElementById('nav-'+v).classList.add('active');
 }
 
 // ── INIT ──
