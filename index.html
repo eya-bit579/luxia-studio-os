@@ -353,63 +353,88 @@ function parseCSV(text) {
 //   headers, tasks...
 function parseSprintCSV(text) {
   function splitLine(line) {
-    const vals=[];let cur='',inQ=false;
-    for(let i=0;i<line.length;i++){if(line[i]==='"'){inQ=!inQ;}else if(line[i]===','&&!inQ){vals.push(cur.trim().replace(/^"|"$/g,''));cur='';}else{cur+=line[i];}}
-    vals.push(cur.trim().replace(/^"|"$/g,''));
-    return vals;
-  }
-  const lines = text.trim().split('\n').map(l=>l.trimEnd());
-  const sprints = [];
-  let currentSprint = null, headers = null;
+    const vals = [];
+    let cur = '', inQ = false;
 
-  for(let i=0;i<lines.length;i++){
-    const cells = splitLine(lines[i]);
-    const first = (cells[0]||'').trim();
-
-    // Skip blanks and workbook title
-    if(!first || first==='Sprint Board') continue;
-
-    // Sprint name row: starts with "Sprint " + digit or uppercase
-    // Covers: "Sprint 11 Mayo - 22 Mayo", "Sprint 27 de Abril - 8 de Mayo"
-    if(/^Sprint\s+[\dA-Z]/i.test(first) && cells.filter(c=>c).length<=2) {
-      if(currentSprint && currentSprint.tasks.length>0) sprints.push(currentSprint);
-      currentSprint = { name: first, tasks: [] };
-      headers = null;
-      continue;
+    for (let i = 0; i < line.length; i++) {
+      if (line[i] === '"') {
+        inQ = !inQ;
+      } else if (line[i] === ',' && !inQ) {
+        vals.push(cur.trim().replace(/^"|"$/g, ''));
+        cur = '';
+      } else {
+        cur += line[i];
+      }
     }
 
-    // Header row
-    if(first==='Name'||first==='Nombre'){headers=cells.map(h=>h.trim());continue;}
-
-    // Task row
-    if(!currentSprint||!headers) continue;
-    const task={};
-    headers.forEach((h,idx)=>{task[h]=(cells[idx]||'').trim();});
-    if(!task['Name']||!task['Fecha Sprint']) continue;
-
-    currentSprint.tasks.push({
-      Name:           task['Name']         ||'',
-      Propietario:    task['Propietario']   ||'',
-      Proyecto:       task['Proyecto']      ||'',
-      Estado:         task['Estado']        ||'',
-      Horas:          task['Horas']         ||'',
-      'Fecha Sprint': task['Fecha Sprint']  ||'',
-      'SP Real':      task['SP Real']       ||'',
-      Actividad:      task['Actividad']     ||'',
-    });
+    vals.push(cur.trim().replace(/^"|"$/g, ''));
+    return vals;
   }
-  if(currentSprint&&currentSprint.tasks.length>0) sprints.push(currentSprint);
 
-  // Sort newest-first by Fecha Sprint start date
-  sprints.sort((a,b)=>{
-    const aD=(a.tasks[0]?.['Fecha Sprint']||'').split(' - ')[0];
-    const bD=(b.tasks[0]?.['Fecha Sprint']||'').split(' - ')[0];
-    return bD.localeCompare(aD);
+  const lines = text.trim().split('\n');
+
+  if (lines.length < 2) {
+    return { sprints: [], members: [] };
+  }
+
+  // HEADERS
+  const headers = splitLine(lines[0]);
+
+  // ROWS
+  const rows = lines.slice(1).map(line => {
+    const cells = splitLine(line);
+    const obj = {};
+
+    headers.forEach((h, i) => {
+      obj[h] = (cells[i] || '').trim();
+    });
+
+    return obj;
   });
 
-  const memberSet=new Set();
-  sprints.forEach(s=>s.tasks.forEach(t=>{if(t.Propietario&&t.Propietario.trim())memberSet.add(t.Propietario.trim());}));
-  return {sprints, members:[...memberSet].sort()};
+  // GROUP BY SPRINT
+  const sprintMap = {};
+
+  rows.forEach(r => {
+    const sprintName = r['Sprint'];
+
+    if (!sprintName) return;
+
+    if (!sprintMap[sprintName]) {
+      sprintMap[sprintName] = {
+        name: `Sprint ${sprintName}`,
+        tasks: []
+      };
+    }
+
+    sprintMap[sprintName].tasks.push({
+      Name: r['Name'] || '',
+      Propietario: r['Propietario'] || '',
+      Proyecto: r['Proyecto'] || '',
+      Estado: r['Estado'] || '',
+      Horas: r['Horas'] || '',
+      'Fecha Sprint': r['Sprint'] || '',
+      'SP Real': r['SP Real'] || '',
+      Actividad: r['Actividad'] || '',
+    });
+  });
+
+  const sprints = Object.values(sprintMap);
+
+  const memberSet = new Set();
+
+  sprints.forEach(s => {
+    s.tasks.forEach(t => {
+      if (t.Propietario?.trim()) {
+        memberSet.add(t.Propietario.trim());
+      }
+    });
+  });
+
+  return {
+    sprints,
+    members: [...memberSet].sort()
+  };
 }
 
 // ── BUILD PROJECTS ──
