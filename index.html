@@ -273,11 +273,13 @@ const PROXIES = [
 ];
 
 async function fetchCSV(gid, label) {
-  const target = `${SHEET_BASE}?gid=${gid}&single=true&output=csv`;
+  const target = `${SHEET_BASE}?gid=${gid}&single=true&output=csv&t=${Date.now()}`;
   const errors = [];
   for (const makeUrl of PROXIES) {
     try {
-      const res = await fetch(makeUrl(target));
+      const res = await fetch(makeUrl(target), {
+        cache: 'no-store'
+      });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const text = await res.text();
       if (!text || text.trim().length < 10) throw new Error('Respuesta vacía');
